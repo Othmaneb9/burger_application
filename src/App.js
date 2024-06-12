@@ -1,21 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react"
 
 function App() {
+const [prenom, setPrenom] = useState("") 
+
+
+const handleClick = () => {
+  alert(`Bonjour ` + prenom)
+}
+const handleSubmit = (event) => {
+  event.preventDefault();
+  
+
+}
+const handleChange = (event) => {
+  setPrenom(event.target.value);
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p> Mon projet burger en javascript</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <h1>Bienvenue chez nous !</h1>
+    <h2>Connectez vous</h2>
+    <form action='submit' onSubmit={handleSubmit}>
+      <input value = {prenom} type='text' id='name' required='required' placeholder='Entrez votre prénom' onChange={handleChange}></input>
+      <button onClick={handleClick} >Accédez à votre Espace</button>
+    </form>
     </div>
   );
 }
