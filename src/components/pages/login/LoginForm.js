@@ -1,26 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import OrderPage from '../OrderPage';
 
-export default function LoginForm() {
-  // state
-const [prenom, setPrenom] = useState("") 
+function LoginForm() {
+  const [prenom, setPrenom] = useState("");
+  const navigate = useNavigate();
 
-// comportements
-const handleSubmit = (event) => {
-  event.preventDefault();
-  alert(`Bonjour ` + prenom)
-  setPrenom("")
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setPrenom("");
+    navigate(OrderPage);
+  };
+
+  const handleChange = (event) => {
+    setPrenom(event.target.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h1>Bienvenue chez nous !</h1><br />
+      <h2>Connectez-vous</h2>
+      <input value={prenom} type='text' id='name' required='required' placeholder='Entrez votre prénom' onChange={handleChange} />
+      <button type="submit">Accédez à votre Espace</button>
+    </form>
+  );
 }
 
-const handleChange = (event) => {
-  setPrenom(event.target.value);
-}
-
-// Affichage
-return (
-  <form action='submit' onSubmit={handleSubmit}>
-    <h1>Bienvenue chez nous !</h1><br/>
-    <h2>Connectez vous</h2>
-    <input value = {prenom} type='text' id='name' required='required' placeholder='Entrez votre prénom' onChange={handleChange}></input>
-    <button>Accédez à votre Espace</button>
-  </form>)
-}
+export default LoginForm;
