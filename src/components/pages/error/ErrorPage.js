@@ -1,12 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import LoginPage from './login/LoginPage'
 
 export default function ErrorPage() {
 
-    const navigate = useNavigate();
-const handleClick = () => {
-    navigate('/Login')
+  const navigate = useNavigate();
+  const handleClick = () => {
+        navigate('/Login')
   }  
 
   return (
