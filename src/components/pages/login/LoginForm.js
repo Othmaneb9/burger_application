@@ -30,7 +30,7 @@ function LoginForm() {
       <h2>Connectez-vous</h2>
       <VscAccount/>
       <input value={prenom} type='text' id='name' required='required' placeholder='Entrez votre prénom' onChange={handleChange} />
-      <button type="submit">Accédez à mon Espace &nbsp; &gt;</button>
+      <button type="submit">Accéder à mon Espace &nbsp; &gt;</button>
     </FormStyle>
     </BackgroundContainer>
   );
@@ -96,6 +96,12 @@ const FormStyle = styled.form`
         color: white;
         border-radius: 5px;
         border-color: #FF9F1B;
+        font-size: 15px;
+    }
+    button:hover{
+        background-color: white;
+        color: #FF9F1B;
+        cursor: pointer;
     }
     h1{
       color : white;
