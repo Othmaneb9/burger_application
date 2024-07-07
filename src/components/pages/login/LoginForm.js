@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
-import backgroundIm from "../../img/backgroundBurger.jpg";
-import logo from "../../img/logo-orange.png";
-import { VscAccount } from "react-icons/vsc";
+import { BsPersonCircle } from "react-icons/bs";
+import Input from './Input';
 
 function LoginForm() {
   const [prenom, setPrenom] = useState("");
@@ -19,44 +18,20 @@ function LoginForm() {
     setPrenom(event.target.value);
   };
 
-  return (
-    <BackgroundContainer>
-    <ParagrapheBalise> CRAZEE 
-      <img src= {logo} alt="Logo"/>
-      BURGER </ParagrapheBalise>
-      <FormStyle onSubmit={handleSubmit}>
+  return ( 
+    <FormStyle action='submit' onSubmit={handleSubmit}>
       <h1>Bienvenue chez nous !</h1>  
       <hr/>
       <h2>Connectez-vous</h2>
-      <VscAccount/>
-      <input value={prenom} type='text' id='name' required='required' placeholder='Entrez votre prénom' onChange={handleChange} />
+      <BsPersonCircle/>
+      <Input value={prenom} onChange={handleChange} placeholder={"Entrez votre prénom"}/>
       <button type="submit">Accéder à mon Espace &nbsp; &gt;</button>
     </FormStyle>
-    </BackgroundContainer>
   );
 }
-const ParagrapheBalise = styled.p`
-  font-size: 110px;
-  font-family: 'Amatic SC';
-  color: #FFA01B;
-  font-weight: 700;
-  text-align: center;
-  justify-content: center;
-  img{
-    width: 200px;
-    height: 150px;
-    position: relative;
-    top : 30px;
-  }
-`
 
-const BackgroundContainer = styled.div`
-   width: 100vw;
-   height: 100vh;
-   background-image: url(${backgroundIm}); 
-   background-size: cover;
-   overflow: hidden;
-`
+
+
 
 const FormStyle = styled.form`
     margin-left: auto;
@@ -73,22 +48,6 @@ const FormStyle = styled.form`
         height : 3px;
         border-width: 0;
     }
-    input{
-        position: relative;
-        right : 8px;
-        width: 350px;
-        height: 55px;
-        border-radius: 5px;
-        border-width: 0;
-        margin-bottom: 18px;
-        padding-left: 50px; 
-        justify-content: center;
-    }
-    input::placeholder {
-          position: relative;
-          left: 20px;
-          color: #D3D3D3;
-        }
     button{
         width: 400px;
         height: 55px;
