@@ -47,7 +47,7 @@ const FormStyle = styled.form`
   margin-top: -60px;
   text-align: center;
   justify-content: center;
-  width: 464px;
+  width: 400px;
   font-family: "Amatic SC";
 
   hr {
