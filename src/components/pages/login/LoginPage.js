@@ -1,14 +1,26 @@
-import React from 'react';
+import React from "react";
 import LoginForm from "./LoginForm";
-import { Routes, Route } from 'react-router-dom';
-
+import Logo from "../../reusable-ui/Logo";
+import styled from "styled-components";
+import backgroundIm from "../../img/backgroundBurger.jpg";
 
 function LoginPage() {
   return (
-    <Routes>
-       <Route path="/" element={<LoginForm />} ></Route>
-  </Routes>
+    <BackgroundContainer>
+      <Logo />
+      <LoginForm />
+    </BackgroundContainer>
   );
 }
+
+const BackgroundContainer = styled.div`
+  height: 100vh;
+  background: url(${backgroundIm}) rgb(0, 0, 0, 0.7);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
+
+  overflow: hidden;
+`;
 
 export default LoginPage;
