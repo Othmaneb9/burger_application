@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
+import Main from "./Main";
 
 export default function OrderPage() {
   
@@ -8,7 +9,7 @@ export default function OrderPage() {
     <BackgroundStyled>
       <ContainerStyled>
         <Navbar/>
-        <div className="Main"></div>
+        <Main />
       </ContainerStyled>
     </BackgroundStyled>
   );
@@ -31,9 +32,4 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   
-
-  .Main{
-    background: green;
-    flex: 1;
-  }
 `

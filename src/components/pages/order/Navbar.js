@@ -16,7 +16,7 @@ export default function Navbar() {
     </NavbarStyled>
   )
 }
-const NavbarStyled = styled.div`
+const NavbarStyled = styled.nav`
     background : red;
     height: 10%;
     border-top-left-radius: 15px;
