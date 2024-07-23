@@ -19,6 +19,7 @@ export default function OrderPage() {
 
 const BackgroundStyled = styled.div`
   background: #FFA01B;
+  background-attachment: scroll;
   height: 100vh;
   display: flex;
   justify-content : center;

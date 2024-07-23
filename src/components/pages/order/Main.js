@@ -15,6 +15,10 @@ export default function Main() {
   )
 }
 
+
+
+
+
 const MainStyled = styled.div`
     background: #F5F5F7;
     flex: 1;
@@ -26,15 +30,18 @@ const MainStyled = styled.div`
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+    padding: 50px 50px 150px;
+    
+
+   
 
     .Card-Style{
       margin-top : 50px;
-      
       width: 240px;
       height: 330px;
       background-color: white;
       border-radius: 15px;
       box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-      
+      justify-self: center;      
     }
 `

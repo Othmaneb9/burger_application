@@ -12,6 +12,9 @@ export default function Navbar({prenom}) {
   )
 }
 const NavbarStyled = styled.nav`
+    background-attachment: fixed;
+    z-index: 2;
+
     height: 10%;
     padding: 0 20px;
     border-top-left-radius: 15px;
