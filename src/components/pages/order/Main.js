@@ -1,16 +1,19 @@
 import styled from "styled-components"
+import Card from "./Card"
+import { fakeMenu2 } from '../../fakeData/fakeMenu'
+import { formatPrice } from "../../../utils/maths"
+
 
 export default function Main() {
   return (
     <MainStyled>
-        <div className="Card-Style">Card</div>
-        <div className="Card-Style">Card</div>
-        <div className="Card-Style">Card</div>
-        <div className="Card-Style">Card</div>
-        <div className="Card-Style">Card</div>
-        <div className="Card-Style">Card</div>
-        <div className="Card-Style">Card</div>
-        <div className="Card-Style">Card</div>
+        {fakeMenu2.map(item =>(
+          <Card key={item.id}
+                imageSource={item.imageSource}
+                title={item.title}
+                price={formatPrice(item.price)}
+          />
+          )) }    
     </MainStyled>
   )
 }
@@ -34,14 +37,4 @@ const MainStyled = styled.div`
     
 
    
-
-    .Card-Style{
-      margin-top : 50px;
-      width: 240px;
-      height: 330px;
-      background-color: white;
-      border-radius: 15px;
-      box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-      justify-self: center;      
-    }
 `
