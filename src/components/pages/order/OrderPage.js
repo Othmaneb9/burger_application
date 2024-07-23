@@ -2,13 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import Main from "./Main";
+import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
-  
+  const { prenom } = useParams();
+
   return (
     <BackgroundStyled>
       <ContainerStyled>
-        <Navbar/>
+        <Navbar prenom={prenom}/>
         <Main />
       </ContainerStyled>
     </BackgroundStyled>

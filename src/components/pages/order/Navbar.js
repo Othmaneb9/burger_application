@@ -1,16 +1,13 @@
-import { useParams } from "react-router-dom";
-import { BsPersonCircle } from "react-icons/bs";
 import styled from "styled-components";
 import NavbarRightSide from "./NavbarRightSide";
 import Logo from "../../reusable-ui/Logo";
 
-export default function Navbar() {
-  const { prenom } = useParams();
+export default function Navbar({prenom}) {
 
   return (
     <NavbarStyled>
         <Logo scale={2.5}/>
-       <NavbarRightSide value={prenom} label={"Se déconnecter"} Icon={<BsPersonCircle />}/>
+       <NavbarRightSide prenom={prenom} />
     </NavbarStyled>
   )
 }
