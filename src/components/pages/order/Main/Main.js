@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Card from "./Card"
-import { fakeMenu2 } from '../../fakeData/fakeMenu'
-import { formatPrice } from "../../../utils/maths"
+import { fakeMenu2 } from '../../../fakeData/fakeMenu'
+import { formatPrice } from "../../../../utils/maths"
 
 
 export default function Main() {

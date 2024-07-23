@@ -1,5 +1,5 @@
 import React from 'react'
-import PrimaryButton from '../../reusable-ui/PrimaryButton'
+import PrimaryButton from '../../../reusable-ui/PrimaryButton'
 import styled from 'styled-components'
 
 export default function Card({ key, imageSource, title, price }) {
