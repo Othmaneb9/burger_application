@@ -1,20 +1,37 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import styled from "styled-components";
+import Navbar from "./Navbar";
+import Main from "./Main";
+import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
-  //state
   const { prenom } = useParams();
 
-  //comportement
-
-  //affichage
-
   return (
-    <div>
-      <h1>Bonjour {prenom} </h1>
-      <Link to="/Login">
-        <button>Déconnexion</button>
-      </Link>
-    </div>
+    <BackgroundStyled>
+      <ContainerStyled>
+        <Navbar prenom={prenom}/>
+        <Main />
+      </ContainerStyled>
+    </BackgroundStyled>
   );
 }
+
+const BackgroundStyled = styled.div`
+  background: #FFA01B;
+  height: 100vh;
+  display: flex;
+  justify-content : center;
+  align-items: center;
+  
+  
+`
+const ContainerStyled = styled.div`
+  background: white;
+  width: 1400px;
+  height: 95%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  
+`
