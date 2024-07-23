@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function OrderLogOut({value, label, Icon }) {
+export default function NavbarRightSide({value, label, Icon }) {
   return (
     <LogOutStyled>
         <h1>Hey, {value} </h1>
@@ -16,6 +16,8 @@ export default function OrderLogOut({value, label, Icon }) {
 const LogOutStyled = styled.div`
     gap : 10px;
     font-family: "Open Sans";
+    width: 50%;
+    background: purple;
     h1{
         
     }

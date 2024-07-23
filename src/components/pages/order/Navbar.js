@@ -1,34 +1,30 @@
 import { useParams } from "react-router-dom";
-import Logo from "../../reusable-ui/Logo";
-import OrderLogOut from "./OrderLogOut";
 import { BsPersonCircle } from "react-icons/bs";
 import styled from "styled-components";
+import NavbarRightSide from "./NavbarRightSide";
+import Logo from "../../reusable-ui/Logo";
 
 export default function Navbar() {
   const { prenom } = useParams();
 
   return (
     <NavbarStyled>
-        <div className="logo">
-        <Logo />
-        </div>
-        <OrderLogOut value={prenom} label={"Se déconnecter"} Icon={<BsPersonCircle />}/>
+        <Logo scale={2.5}/>
+       <NavbarRightSide value={prenom} label={"Se déconnecter"} Icon={<BsPersonCircle />}/>
     </NavbarStyled>
   )
 }
 const NavbarStyled = styled.nav`
-    background : red;
     height: 10%;
+    padding: 0 20px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     display : flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
 
-    .logo{
-        width: 15%;
-        font-size: 36px;
-    }
+   
+
 `
 
 
