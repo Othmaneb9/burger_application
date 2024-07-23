@@ -2,12 +2,15 @@ import styled from "styled-components"
 import Card from "./Card"
 import { fakeMenu2 } from '../../../fakeData/fakeMenu'
 import { formatPrice } from "../../../../utils/maths"
+import { useState } from "react"
 
 
 export default function Main() {
+  const [menu, setmenu] = useState(fakeMenu2)
+
   return (
     <MainStyled>
-        {fakeMenu2.map(item =>(
+        {menu.map(item =>(
           <Card key={item.id}
                 imageSource={item.imageSource}
                 title={item.title}
