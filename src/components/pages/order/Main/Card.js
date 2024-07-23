@@ -1,10 +1,9 @@
-import React from 'react'
 import PrimaryButton from '../../../reusable-ui/PrimaryButton'
 import styled from 'styled-components'
 
-export default function Card({ key, imageSource, title, price }) {
+export default function Card({ imageSource, title, price }) {
   return (
-    <CardStyle key={key} >
+    <CardStyle >
             <img src={imageSource} alt={title} />
             <CardMenuStyle>
                 <h2>{title}</h2>

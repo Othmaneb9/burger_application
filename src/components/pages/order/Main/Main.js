@@ -11,7 +11,7 @@ export default function Main() {
   return (
     <MainStyled>
         {menu.map(item =>(
-          <Card key={item.id}
+          <Card 
                 imageSource={item.imageSource}
                 title={item.title}
                 price={formatPrice(item.price)}
