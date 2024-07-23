@@ -25,7 +25,6 @@ const BackgroundStyled = styled.div`
   justify-content : center;
   align-items: center;
   
-  
 `
 const ContainerStyled = styled.div`
   background: white;
@@ -35,4 +34,6 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   
+  overflow-y: scroll;
+  scrollbar-width: none;
 `
