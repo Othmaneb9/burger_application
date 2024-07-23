@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import logo from "../img/logo-orange.png";
 
-export default function Logo({ className, scale = 1 }) {
+export default function Logo({ className, scale = 1, onClick }) {
   return (
-    <ScaledContainer className={className} scale={scale}>
+    <LogoStyled className={className} scale={scale} onClick={onClick}>
       <ParagrapheBalise>
         {" "}
         CRAZEE
         <img src={logo} alt="Logo" />
         BURGER{" "}
       </ParagrapheBalise>
-    </ScaledContainer>
+    </LogoStyled>
   );
 }
 
-const ScaledContainer = styled.div`
+const LogoStyled = styled.h1`
   transform: scale(${({ scale }) => 1 / scale});
 `;
 

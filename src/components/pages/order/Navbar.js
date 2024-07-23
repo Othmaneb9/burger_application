@@ -6,7 +6,7 @@ export default function Navbar({prenom}) {
 
   return (
     <NavbarStyled>
-        <Logo scale={2.5}/>
+        <Logo onClick={() => window.location.reload()} scale={2.5} className="logo-order-page"/>
        <NavbarRightSide prenom={prenom} />
     </NavbarStyled>
   )
@@ -20,7 +20,9 @@ const NavbarStyled = styled.nav`
     align-items: center;
     justify-content: space-between;
 
-   
+   .logo-order-page{
+    cursor: pointer;
+   }
 
 `
 
