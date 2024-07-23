@@ -52,9 +52,10 @@ const CardMenuStyle = styled.div`
 `
 
 const PriceButtonStyled = styled.div`
-    display: flex;
-    justify-content: space-between;
-    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+
     max-width: 190px;
     position: relative;
     bottom: 30px;
@@ -64,4 +65,9 @@ const PriceButtonStyled = styled.div`
         font-family: 'Open Sans';
         color: #FFA01B;
     }
+    .bouton {
+    padding: 5px 10px;
+    width: 95px;
+    height: 38px;
+  }
 `
