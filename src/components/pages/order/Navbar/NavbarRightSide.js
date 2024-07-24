@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Profile from "./Profile";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import { toast } from "react-toastify";
 import { useState } from "react";
+import ToastAdmin from "./ToastAdmin";
 
 
 export default function NavbarRightSide({ prenom }) {
@@ -34,7 +34,7 @@ export default function NavbarRightSide({ prenom }) {
           labelIfUnchecked="Activer le mode admin" 
           labelIfChecked="Désactiver le mode Admin"
         />
-      <ToastContainer className="toaster" bodyClassName="body-toast" />
+      <ToastAdmin/>  
       <Profile prenom={prenom}/>
     </LogOutStyled>
   )
@@ -45,23 +45,4 @@ const LogOutStyled = styled.div`
     display: flex;
     align-items: center;
     padding-right: 50px;
-
-
-  .toaster {
-    max-width: 300px;
-  }
-
-  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-    background-color: #292729;
-  }
-
-  .body-toast {
-    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-      margin-right: 20px;
-      margin-left: 5px;
-    }
-    div {
-      line-height: 1.3em;
-    }
-  }
 `
