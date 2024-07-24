@@ -1,12 +1,11 @@
 import React from "react"
-import styled from "styled-components/macro"
-import { theme } from "../../theme"
+import styled from "styled-components"
 
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked = "Fermer",
-  labelIfUnchecked = "Ouvrir",
+  labelIfChecked = "Desactiver le mode Admin",
+  labelIfUnchecked = "Activer le mode Admin",
 }) {
   return (
     <ToggleButtonStyled>
@@ -45,9 +44,9 @@ const ToggleButtonStyled = styled.div`
       height: 40px;
       width: 200px;
       position: relative;
-      font-size: ${theme.fonts.size.XXS};
+      font-size: 10px;
       letter-spacing: 0.5px;
-      border: 2px solid ${theme.colors.background_dark};
+      border: 2px solid #292729;
       padding: 0;
       margin: 0;
       cursor: pointer;
@@ -91,7 +90,7 @@ const ToggleButtonStyled = styled.div`
     }
 
     &.toggle:not(:checked) + label {
-      background-color: ${theme.colors.background_dark};
+      background-color: #292729;
       /* text-align: right; */
     }
 
@@ -101,20 +100,20 @@ const ToggleButtonStyled = styled.div`
       right: 8px;
       left: auto;
       opacity: 1;
-      color: ${theme.colors.primary};
-      font-weight: ${theme.fonts.weights.bold};
+      color: #FFA01B;
+      font-weight: 700;
     }
 
     // small circle when not checked
     &.toggle:not(:checked) + label:before {
       left: 3px;
-      background-color: ${theme.colors.primary};
+      background-color: #FFA01B;
     }
 
     // box container when checked
     &.toggle:checked + label {
       text-align: left;
-      border-color: ${theme.colors.primary};
+      border-color: #FFA01B;
     }
 
     // label text when checked
@@ -123,14 +122,14 @@ const ToggleButtonStyled = styled.div`
       left: 9px;
       right: auto;
       opacity: 1;
-      color: ${theme.colors.dark};
+      color: #292729;
       letter-spacing: 0px;
     }
 
     // small circle when checked
     &.toggle:checked + label:before {
       left: 162px;
-      background-color: ${theme.colors.primary};
+      background-color: #FFA01B;
     }
   }
 `

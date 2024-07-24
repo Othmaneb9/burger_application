@@ -1,6 +1,5 @@
 import React from "react"
 import "react-toastify/dist/ReactToastify.css"
-import { theme } from "../../../../theme"
 import { ToastContainer } from "react-toastify"
 import styled from "styled-components"
 
@@ -20,7 +19,7 @@ const NavbarRightSideIncompletStyled = styled.div`
   }
 
   .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-    background: ${theme.colors.background_dark};
+    background-color: #292729;
   }
 
   .body-toast {

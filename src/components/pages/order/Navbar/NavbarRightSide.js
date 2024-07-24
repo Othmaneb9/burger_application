@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import Profile from "./Profile";
+import ToggleButton from "./codeIncompletdonne/ToggleButton";
 
 export default function NavbarRightSide({ prenom }) {
   return (
     <LogOutStyled>
+        <ToggleButton/>
         <Profile prenom={prenom}/>
     </LogOutStyled>
   )
