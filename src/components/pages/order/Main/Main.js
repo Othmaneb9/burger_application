@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Card from "./Card"
+import Card from "../../../reusable-ui/Card"
 import { fakeMenu2 } from '../../../fakeData/fakeMenu'
 import { formatPrice } from "../../../../utils/maths"
 import { useState } from "react"
@@ -10,11 +10,12 @@ export default function Main() {
 
   return (
     <MainStyled>
-        {menu.map(item =>(
+        {menu.map(({ id, imageSource, title, price }) =>(
           <Card 
-                imageSource={item.imageSource}
-                title={item.title}
-                price={formatPrice(item.price)}
+                key={id}
+                imageSource={imageSource}
+                title={title}
+                price={formatPrice(price)}
           />
           )) }    
     </MainStyled>
@@ -37,7 +38,5 @@ const MainStyled = styled.div`
     border-bottom-right-radius: 15px;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
     padding: 50px 50px 150px;
-    
-
    
 `

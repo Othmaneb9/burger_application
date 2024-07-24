@@ -1,4 +1,4 @@
-import PrimaryButton from '../../../reusable-ui/PrimaryButton'
+import PrimaryButton from './PrimaryButton'
 import styled from 'styled-components'
 
 export default function Card({ imageSource, title, price }) {
