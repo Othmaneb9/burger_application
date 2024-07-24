@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function PrimaryButton({ label, Icon }) {
+export default function PrimaryButton({ label, Icon, className }) {
   return (
-    <ButtonStyled type="submit">
+    <ButtonStyled className={className} type="submit">
       <span>{label}</span>
       {Icon && Icon}
     </ButtonStyled>

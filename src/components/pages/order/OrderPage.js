@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Navbar from "./Navbar";
-import Main from "./Main";
+import Navbar from "./Navbar/Navbar";
+import Main from "./Main/Main";
 import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
@@ -19,11 +19,11 @@ export default function OrderPage() {
 
 const BackgroundStyled = styled.div`
   background: #FFA01B;
+  background-attachment: scroll;
   height: 100vh;
   display: flex;
   justify-content : center;
   align-items: center;
-  
   
 `
 const ContainerStyled = styled.div`
@@ -34,4 +34,6 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   
+  overflow-y: scroll;
+  scrollbar-width: none;
 `
