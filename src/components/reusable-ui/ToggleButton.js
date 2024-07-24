@@ -4,8 +4,8 @@ import styled from "styled-components"
 export default function ToggleButton({
   isChecked,
   onToggle,
-  labelIfChecked = "Desactiver le mode Admin",
-  labelIfUnchecked = "Activer le mode Admin",
+  labelIfChecked = "Ouvrir",
+  labelIfUnchecked = "Fermer",
 }) {
   return (
     <ToggleButtonStyled>
