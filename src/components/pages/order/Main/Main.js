@@ -1,16 +1,19 @@
 import styled from "styled-components"
 import Admin from "../Admin/Admin"
 import Menu from "./Menu"
+import { useContext } from "react"
+import UserContext from "../../../../context/UserContext"
 
 
 export default function Main() {
+  const {isModeAdmin, setIsModeAdmin} = useContext(UserContext)
 
   return (
     <MainStyled>
       {/* <div className="basket">Basket</div> */}
       <div className="menu-and-admin">
           <Menu/> 
-          <Admin />
+          {isModeAdmin && <Admin />}
       </div>
     </MainStyled>
   )
