@@ -7,15 +7,12 @@ import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import OpenContext from '../../../../context/OpenContext';
 
 export default function AdminTabs() {
-const OpenOrClose = useContext(OpenContext)
+const {isOpen, setIsOpen} = useContext(OpenContext)
 
-const handleClick = () => {
-    OpenOrClose.setIsOpen(!OpenOrClose.isOpen);
-}
 
   return (
     <AdminTabsStyled>
-        <BottomButton onClick={handleClick} Icon={OpenOrClose.isOpen ? <FiChevronDown/> : <FiChevronUp/>} />
+        <BottomButton onClick={() => setIsOpen(!isOpen)} Icon={isOpen ? <FiChevronDown/> : <FiChevronUp/>} className={isOpen ? "is-active" : ""}/>
         
         <BottomButton Icon={<AiOutlinePlus/>} label={" Ajouter un produit"} className='Plus'/>
 
@@ -52,5 +49,9 @@ const AdminTabsStyled = styled.div`
         width: 212.84px;
         padding: 10px 22.82px 11px 22px;
     }
-
+    .is-active{
+        background-color: white;
+        color: grey;
+        border-color: #E4E5E9;
+    }
 `
