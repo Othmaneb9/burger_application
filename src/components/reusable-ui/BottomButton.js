@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export default function BottomButton({label, Icon, className}) {
+export default function BottomButton({label, Icon, className, onClick}) {
   return (
-        <BottomButtonStyled className={className}>
+        <BottomButtonStyled onClick={onClick} className={className}>
              {Icon && Icon}
              {label}
         </BottomButtonStyled>

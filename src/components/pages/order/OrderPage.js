@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import { useParams } from "react-router-dom";
-import AdminPanel from "./AdminPanel";
+import Admin from "./Admin/Admin";
 
 export default function OrderPage() {
   const { prenom } = useParams();
@@ -13,7 +13,7 @@ export default function OrderPage() {
       <ContainerStyled>
         <Navbar prenom={prenom}/>
         <Main />
-        <AdminPanel/>
+        <Admin />
       </ContainerStyled>
     </BackgroundStyled>
   );
