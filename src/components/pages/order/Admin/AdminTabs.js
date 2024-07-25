@@ -1,31 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AiOutlinePlus } from 'react-icons/ai';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { MdModeEditOutline } from 'react-icons/md';
 import styled from 'styled-components';
 import BottomButton from '../../../reusable-ui/BottomButton';
-import AdminPanel from './AdminPanel';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import OpenContext from '../../../../context/OpenContext';
 
 export default function AdminTabs() {
-    const [isConnected, setIsConnected] = useState(false)
+const OpenOrClose = useContext(OpenContext)
 
-    const handleClick = () => {
-      setIsConnected(!isConnected)
-    };
+const handleClick = () => {
+    OpenOrClose.setIsOpen(!OpenOrClose.isOpen);
+}
+
   return (
     <AdminTabsStyled>
-        <button onClick={handleClick}>
-        {isConnected &&(
-            <div className='Ouvert'><FiChevronDown/> <AdminPanel /></div>
-        )}
-        {!isConnected &&(
-            <div className='Fermer'><FiChevronUp/></div>
-        )}
-        </button>
+        <BottomButton onClick={handleClick} Icon={OpenOrClose.isOpen ? <FiChevronDown/> : <FiChevronUp/>} />
+        
+        <BottomButton Icon={<AiOutlinePlus/>} label={" Ajouter un produit"} className='Plus'/>
 
-        <BottomButton Icon={<AiOutlinePlus/>} label={" Ajouter un produit"} onClick={handleClick} className='Plus'/>
-
-        <BottomButton Icon={<MdModeEditOutline/>} label={" Modifier un produit"} onClick={handleClick} className='Modifier'/>
+        <BottomButton Icon={<MdModeEditOutline/>} label={" Modifier un produit"} className='Modifier'/>
     </AdminTabsStyled>
   )
 }
@@ -33,13 +27,10 @@ export default function AdminTabs() {
 
 
 const AdminTabsStyled = styled.div`
-    z-index: 3;
-    position: fixed;
-    bottom: 23px;
+    position: relative;
+    margin-bottom: 250px;
     display: flex;
     margin-left: 71px;
-
-    
 
     button{
         width: 60px;
@@ -49,6 +40,7 @@ const AdminTabsStyled = styled.div`
         background-color : #292729;
         color: white;
         cursor: pointer;
+        margin-left: 1px;
     }
     .Plus{
         width: 212.84px;

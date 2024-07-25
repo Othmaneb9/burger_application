@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import { useParams } from "react-router-dom";
+import UserContext from "../../../context/UserContext";
 
 export default function OrderPage() {
-  const { prenom } = useParams();
+
+  // const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
+
+  const UserContextValue = {
+    isModeAdmin,
+    setIsModeAdmin
+  };
 
   return (
+  <UserContext.Provider value={UserContextValue}>
     <BackgroundStyled>
       <ContainerStyled>
-        <Navbar prenom={prenom}/>
+        <Navbar/>
         <Main />
       </ContainerStyled>
     </BackgroundStyled>
+  </UserContext.Provider>
   );
 }
 

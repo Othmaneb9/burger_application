@@ -2,12 +2,12 @@ import styled from "styled-components";
 import NavbarRightSide from "./NavbarRightSide";
 import Logo from "../../../reusable-ui/Logo";
 
-export default function Navbar({prenom}) {
+export default function Navbar() {
 
   return (
     <NavbarStyled className="header">
         <Logo onClick={() => window.location.reload()} scale={2.5} className="logo-order-page"/>
-       <NavbarRightSide prenom={prenom} />
+       <NavbarRightSide  />
     </NavbarStyled>
   )
 }

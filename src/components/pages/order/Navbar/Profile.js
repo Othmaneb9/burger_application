@@ -1,8 +1,10 @@
 import { BsPersonCircle } from "react-icons/bs"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Profile({ prenom }) {
+export default function Profile() {
+  const { prenom } = useParams();
+
   return (
     <ProfileStyled>
       <div className="info">
