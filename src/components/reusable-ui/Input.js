@@ -17,6 +17,12 @@ const InputStyle = styled.div`
   border-radius: 5px;
   align-items: center;
 
+  .icon {
+    font-size: 15px;
+    margin-right: 8px;
+    color: #93a2b1;
+  }
+
   input {
     border: none;
     font-size: 15px;

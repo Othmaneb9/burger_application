@@ -12,17 +12,15 @@ export default function Navbar({prenom}) {
   )
 }
 const NavbarStyled = styled.nav`
-    z-index: 2;
+    background-color: white;
     height: 10%;
+    display : flex;
+    justify-content: space-between;
     padding: 0 20px;
+
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    display : flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    position: sticky;
-    top: 0;
+    
 
    .logo-order-page{
     cursor: pointer;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import { useParams } from "react-router-dom";
-import Admin from "./Admin/Admin";
 
 export default function OrderPage() {
   const { prenom } = useParams();
@@ -13,7 +12,6 @@ export default function OrderPage() {
       <ContainerStyled>
         <Navbar prenom={prenom}/>
         <Main />
-        <Admin />
       </ContainerStyled>
     </BackgroundStyled>
   );
@@ -36,6 +34,6 @@ const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   
-  overflow-y: scroll;
-  scrollbar-width: none;
+  
+
 `

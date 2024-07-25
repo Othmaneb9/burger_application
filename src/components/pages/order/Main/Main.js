@@ -1,23 +1,17 @@
 import styled from "styled-components"
-import Card from "../../../reusable-ui/Card"
-import { fakeMenu2 } from '../../../fakeData/fakeMenu'
-import { formatPrice } from "../../../../utils/maths"
-import { useState } from "react"
+import Admin from "../Admin/Admin"
+import Menu from "./Menu"
 
 
 export default function Main() {
-  const [menu, setmenu] = useState(fakeMenu2)
 
   return (
     <MainStyled>
-        {menu.map(({ id, imageSource, title, price }) =>(
-          <Card 
-                key={id}
-                imageSource={imageSource}
-                title={title}
-                price={formatPrice(price)}
-          />
-          )) }    
+      {/* <div className="basket">Basket</div> */}
+      <div className="menu-and-admin">
+          <Menu/> 
+          <Admin />
+      </div>
     </MainStyled>
   )
 }
@@ -28,15 +22,24 @@ export default function Main() {
 
 const MainStyled = styled.div`
     background: #F5F5F7;
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap : 20px;
-    grid-row-gap: 60px;
+    height: calc(95vh - 10vh);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-    padding: 50px 50px 150px;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    
+    
+    
+    .menu-and-admin{
+      position: relative;
+      overflow-y: hidden;
+    display: grid;
+    scrollbar-width: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    } 
+
    
 `

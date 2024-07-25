@@ -4,10 +4,10 @@ import Logo from "../../reusable-ui/Logo";
 import styled from "styled-components";
 import backgroundIm from "../../img/backgroundBurger.jpg";
 
-function LoginPage() {
+export default function LoginPage() {
   return (
     <BackgroundContainer>
-      <Logo />
+      <Logo className={"logo-login-page"}/>
       <LoginForm />
     </BackgroundContainer>
   );
@@ -15,12 +15,27 @@ function LoginPage() {
 
 const BackgroundContainer = styled.div`
   height: 100vh;
-  background: url(${backgroundIm}) rgb(0, 0, 0, 0.7);
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: darken;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  overflow: hidden;
-`;
+  ::before {
+    content: "";
+    background: url(${backgroundIm}) rgba(0, 0, 0, 0.7);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: darken;
 
-export default LoginPage;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .logo-login-page {
+    transform: scale(2.5);
+  }
+`

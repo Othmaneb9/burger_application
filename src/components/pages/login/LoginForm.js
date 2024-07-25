@@ -6,7 +6,7 @@ import Input from "../../reusable-ui/Input";
 import PrimaryButton from "../../reusable-ui/PrimaryButton";
 import { SlArrowRight } from "react-icons/sl";
 
-function LoginForm() {
+export default function LoginForm() {
   const [prenom, setPrenom] = useState("");
   const navigate = useNavigate();
 
@@ -25,9 +25,9 @@ function LoginForm() {
       <h1>Bienvenue chez nous !</h1>
       <hr />
       <h2>Connectez-vous</h2>
-
+    <div>
       <Input
-        Icon={<BsPersonCircle />}
+        Icon={<BsPersonCircle className="icon" /> }
         value={prenom}
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
@@ -35,42 +35,42 @@ function LoginForm() {
       />
       
       
-      <PrimaryButton label={"Accéder à mon Espace"} Icon={<SlArrowRight />} />
-
+      <PrimaryButton label={"Accéder à mon Espace"} Icon={<SlArrowRight className="icon" />} />
+    </div>
     </FormStyle>
   );
 }
 
 const FormStyle = styled.form`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -60px;
   text-align: center;
-  justify-content: center;
-  width: 400px;
-  font-family: "Amatic SC";
+  max-width: 500px;
+  min-width: 400px;
+  margin: 0px auto;
+  padding: 40px 32px;
+  border-radius: 5px;
+  font-family: "Amatic SC", cursive;
 
   hr {
-    background-color: #f56a2c;
-    width: 400px;
-    height: 3px;
-    border-width: 0;
+    border: 1.5px solid #f56a2c;
+    margin-bottom: (8* 5)px;
   }
 
   h1 {
-    color: white;
+    color: #FFFFFF;
     font-size: 48px;
   }
+
   h2 {
-    color: white;
-    font-weight: 700;
+    margin: 20px 10px 10px;
+    color: #FFFFFF;
     font-size: 36px;
   }
-  svg {
-    font-size: 15px;
-    margin-right: 8px;
-    color: #93a2b1;
-  }
-`;
 
-export default LoginForm;
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    margin-left: 10px;
+  }
+`
