@@ -28,7 +28,6 @@ const handleClick = () => {
 
 const AdminTabsStyled = styled.div`
     position: relative;
-    margin-bottom: 250px;
     display: flex;
     margin-left: 71px;
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import AdminTabs from './AdminTabs'
 import AdminPanel from './AdminPanel'
 import styled from 'styled-components'
@@ -22,5 +22,9 @@ export default function Admin() {
 }
 
 const AdminBlocStyled = styled.div`
-      position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
 `
