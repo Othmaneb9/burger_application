@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import UserContext from '../../../../context/UserContext'
 
 export default function AdminPanel() {
-
+const {isAddSelected, isEditSelected} = useContext(UserContext)
   return (
     <AdminPanelStyled>
-       Admin
+       {isEditSelected && "Ajouter un produit"}
+       {isAddSelected && "Modifier un produit"}
     </AdminPanelStyled>
   )
 }

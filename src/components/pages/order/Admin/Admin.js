@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
-import AdminTabs from './AdminTabs'
-import AdminPanel from './AdminPanel'
-import styled from 'styled-components'
-import OpenContext from '../../../../context/OpenContext'
+import React, { useState } from "react";
+import AdminTabs from "./AdminTabs";
+import AdminPanel from "./AdminPanel";
+import styled from "styled-components";
+import OpenContext from "../../../../context/OpenContext";
 
 export default function Admin() {
- const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
- const ItOpenOrNot = {
+  const ItOpenOrNot = {
     isOpen,
-    setIsOpen
- }
+    setIsOpen,
+  };
   return (
     <OpenContext.Provider value={ItOpenOrNot}>
       <AdminBlocStyled>
-          <AdminTabs />
-          {isOpen && <AdminPanel/>}
+        <AdminTabs />
+        {isOpen && <AdminPanel />}
       </AdminBlocStyled>
     </OpenContext.Provider>
-  )
+  );
 }
 
 const AdminBlocStyled = styled.div`
@@ -26,5 +26,4 @@ const AdminBlocStyled = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
- 
-`
+`;

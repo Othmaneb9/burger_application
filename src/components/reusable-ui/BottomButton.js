@@ -11,11 +11,16 @@ export default function BottomButton({label, Icon, className, onClick}) {
 }
 
 const BottomButtonStyled = styled.button`
-    width: 60px;
     height: 43px;
     border-radius: 5px 5px 0px 0px;
     padding: 13px 22px 14px 22px;
+
     background-color : #292729;
     color: white;
     cursor : pointer;
+
+    label{
+      width: 212px;
+      padding : 10px 22px 11px 22px;
+    }
 `
