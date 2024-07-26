@@ -1,33 +1,37 @@
 import styled from "styled-components";
 import logo from "../img/logo-orange.png";
 
-export default function Logo({ className, scale = 1, onClick }) {
+export default function Logo({ className, onClick }) {
   return (
-    <LogoStyled className={className} scale={scale} onClick={onClick}>
-      <ParagrapheBalise>
-        {" "}
-        CRAZEE
+    <LogoStyled className={className} onClick={onClick}>
+        <h1>CRAZEE</h1>
         <img src={logo} alt="Logo" />
-        BURGER{" "}
-      </ParagrapheBalise>
+        <h1>BURGER</h1>
     </LogoStyled>
   );
 }
 
-const LogoStyled = styled.h1`
-  transform: scale(${({ scale }) => 1 / scale});
-`;
+const LogoStyled = styled.div`
+  display: flex;
+  align-items: center;
 
-const ParagrapheBalise = styled.p`
-  font-size: 110px;
-  font-family: "Amatic SC";
-  color: #ffa01b;
-  font-weight: 700;
-  text-align: center;
-  img {
-    width: 200px;
-    height: 150px;
-    position: relative;
-    top: 30px;
+  h1 {
+    display: inline;
+    text-align: center;
+    color: #ffa01b;
+    font-size: 36px;
+    line-height: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: "Amatic SC", cursive;
   }
-`;
+
+  img {
+    object-fit: contain;
+    object-position: center;
+    height: 60px;
+    width: 80px; // for Safari and Firefox
+    margin: 0 ${8 / 2}px;
+  }
+`

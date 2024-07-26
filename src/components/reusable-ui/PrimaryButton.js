@@ -9,7 +9,7 @@ export default function PrimaryButton({ label, Icon, className }) {
   );
 }
 const ButtonStyled = styled.button`
-  width: 400px;
+  width: 100%;
   height: 55px;
   background-color: #ff9f1b;
   color: white;

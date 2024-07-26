@@ -4,69 +4,91 @@ import styled from 'styled-components'
 export default function Card({ imageSource, title, price }) {
   return (
     <CardStyle >
-            <img src={imageSource} alt={title} />
-            <CardMenuStyle>
-                <h2>{title}</h2>
-                <PriceButtonStyled>
-                    <p>{price}</p>
-                    <PrimaryButton className={"bouton"} label={"Ajouter"}/> 
-                </PriceButtonStyled> 
-            </CardMenuStyle>
+            <div className='image'><img src={imageSource} alt={title} /></div>
+            <div className="text-info">
+        <div className="title">{title}</div>
+        <div className="description">
+          <div className="left-description">{price}</div>
+          <div className="right-description">
+            <PrimaryButton className="primary-button" label={"Ajouter"} />
+          </div>
+        </div>
+      </div>
     </CardStyle>
   )
 }
 
 const CardStyle = styled.div`
-      margin-top : 50px;
-      width: 240px;
-      height: 330px;
       background-color: white;
-      border-radius: 15px;
+      width: 200px;
+      height: 300px;
+      display: grid;
+      grid-template-rows: 65% 1fr;
+      padding: 20px;
+      padding-bottom: 10px;
       box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-      justify-self: center;  
+      border-radius: 15px;
+  
+    .image {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
 
-      img{
-        width: 200px;
-        height: 145px;
-        margin-left: 20px;
-        margin-top: 50px;
-        margin-right: 20px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
-`
-
-const CardMenuStyle = styled.div`
-    width: 200px;
-    height: 110px;
-    padding: 0px, 5px, 5px, 5px;
-    margin-left: 20px;
-    margin-right: 20px;
-    position: relative;
-    bottom: 20px;
-    
-    h2{
-        font-size: 36px;
-        font-family: "Amatic sc";
-        color: #17161A; 
-    }
-`
-
-const PriceButtonStyled = styled.div`
+  }
+  .text-info {
     display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
+    grid-template-rows: 30% 70%;
+    padding: 5px;
 
-    max-width: 190px;
-    position: relative;
-    bottom: 30px;
-    
-
-    p{
-        font-family: 'Open Sans';
-        color: #FFA01B;
+    .title {
+      margin: auto 0;
+      font-size: 36px;
+      position: relative;
+      bottom: 10px;
+      font-weight: 700;
+      color: #17161a;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      font-family: "Amatic SC", cursive;
     }
-    .bouton {
-    padding: 5px 10px;
-    width: 95px;
-    height: 38px;
+
+    .description {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      .left-description {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+        color: #ffa01b;
+      }
+
+      .right-description {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 18px;
+
+        .primary-button {
+          font-size: 12px;
+          cursor: pointer;
+          padding: 12px;
+        }
+      }
+    }
   }
 `
