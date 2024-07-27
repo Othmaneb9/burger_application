@@ -2,15 +2,13 @@ import { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { formatPrice } from "../../../../utils/maths"
 import Card from "../../../reusable-ui/Card"
-import { fakeMenu2 } from '../../../fakeData/fakeMenu'
 import UserContext from '../../../../context/UserContext'
 import { TiDelete } from 'react-icons/ti'
 import DeleteItem from '../../../../utils/DeleteItem'
 
 
 export default function Menu() {
-    const [menu, setmenu] = useState(fakeMenu2)
-    const {isModeAdmin, setIsModeAdmin} = useContext(UserContext)
+    const {isModeAdmin, menu} = useContext(UserContext)
 
     const handleDelete = () => {
       DeleteItem();
@@ -21,7 +19,7 @@ export default function Menu() {
     {menu.map(({ id, imageSource, title, price }) =>(
         <Card 
               key={id}
-              imageSource={imageSource}
+              imageSource={imageSource ? imageSource : "/img/coming-soon.png"}
               title={title}
               price={formatPrice(price)}
               Icon={isModeAdmin && <TiDelete/>}

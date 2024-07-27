@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import UserContext from '../../../../context/UserContext'
+import UserContext from '../../../../../../context/UserContext'
 import AddProduct from './AddProduct'
 
 export default function AdminPanel() {
 const {isAddSelected, isEditSelected} = useContext(UserContext)
+
   return (
     <AdminPanelStyled>
        {isEditSelected && <AddProduct/>}
@@ -15,7 +16,7 @@ const {isAddSelected, isEditSelected} = useContext(UserContext)
 
 
 const AdminPanelStyled = styled.div`
- 
+ padding: 30px 5%;
  height: 250px;
   background: #FFFFFF;
   border: 1px solid #e4e5e9;

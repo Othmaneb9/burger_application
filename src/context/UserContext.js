@@ -8,4 +8,7 @@ export default createContext({
   setIsEditSelected: () => {},
   isAddSelected: false,
   setIsAddSelected: () => {},
+  menu :[],
+  setMenu : () => {},
+  handleAddProduct : () => {},
 });

@@ -3,11 +3,19 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import UserContext from "../../../context/UserContext";
+import { fakeMenu } from "../../fakeData/fakeMenu";
 
 export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
+  const [menu, setMenu] = useState(fakeMenu.LARGE)
+
+  const handleAddProduct = (NewProduct) => {
+    const UpdatedMenu = [NewProduct, ...menu]
+    setMenu(UpdatedMenu)
+  }
+
 
   const UserContextValue = {
     isModeAdmin,
@@ -16,6 +24,9 @@ export default function OrderPage() {
     setIsEditSelected,
     isAddSelected,
     setIsAddSelected,
+    menu,
+    setMenu,
+    handleAddProduct,
   };
 
   return (

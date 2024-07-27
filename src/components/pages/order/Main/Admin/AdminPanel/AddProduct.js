@@ -1,62 +1,97 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import Input from "../../../reusable-ui/Input";
+import Input from "../../../../../reusable-ui/Input";
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
-import PrimaryButton from "../../../reusable-ui/PrimaryButton";
+import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
+import UserContext from "../../../../../../context/UserContext";
 
 export default function AddProduct() {
-  const [productName, setProductName] = useState("");
+  const { handleAddProduct } = useContext(UserContext);
+  const [title, setTitle] = useState("");
+  const [imageSource, setImageSource] = useState("");
+  const [price, setPrice] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setProductName("");
-    console.log(`producName :  ${productName}`);
+
+    const NewProductToAdd = {
+      id: crypto.randomUUID(),
+      title: title,
+      imageSource: imageSource,
+      price: price,
+    };
+    handleAddProduct(NewProductToAdd);
+    setTitle("")
+    setImageSource("")
+    setPrice(0)
+
+
+
   };
-  const handleChange = (event) => {
-    setProductName(event.target.value);
+
+  const handleChange1 = (event) => {
+    setTitle(event.target.value);
+  };
+  const handleChange2 = (event) => {
+    setImageSource(event.target.value);
+  };
+  const handleChange3 = (event) => {
+    setPrice(event.target.value);
   };
 
   return (
     <FormulaireStyle action="submit" onSubmit={handleSubmit}>
       <div className="image">
-        <p>Aucune Image</p>
+        {imageSource ? <img src= {imageSource} alt="Image Inconnue"/> : <p>Aucune Image</p>}
       </div>
       <div className="input-style">
         <Input
+          value={title}
           Icon={<FaHamburger className="icon" />}
-          onChange={handleChange}
           placeholder={"Nom du produit (ex : Super Burger)"}
+          onChange={handleChange1}
         />
         <Input
+          value={imageSource}
           Icon={<BsFillCameraFill className="icon" />}
           placeholder={
             "Lien d'URL d'une image (ex : https://la-photo-de-mon-produit.png)"
           }
+          onChange={handleChange2}
         />
-        <Input Icon={<MdOutlineEuro className="icon" />} placeholder={"Prix"} />
+        <Input
+          value={price ? price : ""}
+          Icon={<MdOutlineEuro className="icon" />}
+          placeholder={"Prix"}
+          onChange={handleChange3}
+        />
         <PrimaryButton
           className={"button-ajouter"}
           label={"Ajouter un nouveau produit au menu"}
+          type="submit"
         />
       </div>
     </FormulaireStyle>
   );
 }
 const FormulaireStyle = styled.form`
-  margin-left: 71px;
-  margin-top: 31px;
   display: flex;
   width: 880px;
   height: 160px;
 
   .image {
     margin-right: 20px;
+    margin-top: 18px;
     border: 1px solid #e4e5e9;
     border-radius: 5px;
     width: 215px;
     height: 120px;
+    img{
+      width: 100px;
+      height: auto;
+    }
 
     p {
       color: #93a2b1;
