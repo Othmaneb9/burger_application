@@ -1,12 +1,16 @@
-import PrimaryButton from './PrimaryButton'
-import styled from 'styled-components'
+import PrimaryButton from "./PrimaryButton";
+import styled from "styled-components";
 
 export default function Card({ onClick, imageSource, title, price, Icon }) {
   return (
-    <CardStyle >
-      <button onClick={onClick} className='buttonDelete'><div className='icon-wrapper'>{Icon && Icon}</div></button>
-            <div className='image'><img src={imageSource} alt={title} /></div>
-            <div className="text-info">
+    <CardStyle>
+      <button onClick={onClick} className="buttonDelete">
+        <div className="icon-wrapper">{Icon && Icon}</div>
+      </button>
+      <div className="image">
+        <img src={imageSource} alt={title} />
+      </div>
+      <div className="text-info">
         <div className="title">{title}</div>
         <div className="description">
           <div className="left-description">{price}</div>
@@ -16,48 +20,51 @@ export default function Card({ onClick, imageSource, title, price, Icon }) {
         </div>
       </div>
     </CardStyle>
-  )
+  );
 }
 
 const CardStyle = styled.div`
-      background-color: white;
-      width: 200px;
-      height: 300px;
-      display: grid;
-      grid-template-rows: 65% 1fr;
-      padding: 20px;
-      padding-bottom: 10px;
-      box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-      border-radius: 15px;
-      position: relative;
-    
-    .buttonDelete{
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      display: flex;
-     background: none;
-     border: none;
-      top: 15px;
-      left: 195px;
-      cursor : pointer;
+  background-color: white;
+  width: 200px;
+  height: 300px;
+  display: grid;
+  grid-template-rows: 65% 1fr;
+  padding: 20px;
+  padding-bottom: 10px;
+  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  border-radius: 15px;
+  position: relative;
 
-      .icon-wrapper {
+  .buttonDelete {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    display: flex;
+    background: none;
+    border: none;
+    top: 15px;
+    left: 195px;
+    cursor: pointer;
+
+    .icon-wrapper {
       width: 20px;
       height: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
 
-      svg{
+      svg {
         position: absolute;
-        color: #FFA01B;
+        color: #ffa01b;
         width: 100%;
         height: 100%;
+        &:hover {
+          color: #e25549;
+        }
       }
     }
   }
-    .image {
+  .image {
     width: 100%;
     height: auto;
     margin-top: 30px;
@@ -119,4 +126,4 @@ const CardStyle = styled.div`
       }
     }
   }
-`
+`;
