@@ -1,9 +1,10 @@
 import PrimaryButton from './PrimaryButton'
 import styled from 'styled-components'
 
-export default function Card({ imageSource, title, price }) {
+export default function Card({ onClick, imageSource, title, price, Icon }) {
   return (
     <CardStyle >
+      <button onClick={onClick} className='buttonDelete'><div className='icon-wrapper'>{Icon && Icon}</div></button>
             <div className='image'><img src={imageSource} alt={title} /></div>
             <div className="text-info">
         <div className="title">{title}</div>
@@ -28,7 +29,34 @@ const CardStyle = styled.div`
       padding-bottom: 10px;
       box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
       border-radius: 15px;
-  
+      position: relative;
+    
+    .buttonDelete{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      display: flex;
+     background: none;
+     border: none;
+      top: 15px;
+      left: 195px;
+      cursor : pointer;
+
+      .icon-wrapper {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg{
+        position: absolute;
+        color: #FFA01B;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
     .image {
     width: 100%;
     height: auto;
