@@ -6,12 +6,14 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import UserContext from "../../../../../../context/UserContext";
+import { FiCheck } from "react-icons/fi";
 
 export default function AddProduct() {
   const { handleAddProduct } = useContext(UserContext);
   const [title, setTitle] = useState("");
   const [imageSource, setImageSource] = useState("");
   const [price, setPrice] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -23,12 +25,14 @@ export default function AddProduct() {
       price: price,
     };
     handleAddProduct(NewProductToAdd);
-    setTitle("")
-    setImageSource("")
-    setPrice(0)
+    setTitle("");
+    setImageSource("");
+    setPrice(0);
 
-
-
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+    }, 2000);
   };
 
   const handleChange1 = (event) => {
@@ -44,7 +48,11 @@ export default function AddProduct() {
   return (
     <FormulaireStyle action="submit" onSubmit={handleSubmit}>
       <div className="image">
-        {imageSource ? <img src= {imageSource} alt="Image Inconnue"/> : <p>Aucune Image</p>}
+        {imageSource ? (
+          <img src={imageSource} alt="Image Inconnue" />
+        ) : (
+          <p>Aucune Image</p>
+        )}
       </div>
       <div className="input-style">
         <Input
@@ -73,6 +81,11 @@ export default function AddProduct() {
           type="submit"
         />
       </div>
+      {isSubmitted && (
+        <p>
+          <FiCheck /> Ajouté avec succès
+        </p>
+      )}
     </FormulaireStyle>
   );
 }
@@ -88,7 +101,7 @@ const FormulaireStyle = styled.form`
     border-radius: 5px;
     width: 215px;
     height: 120px;
-    img{
+    img {
       width: 100px;
       height: auto;
     }

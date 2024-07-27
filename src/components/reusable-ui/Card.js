@@ -1,10 +1,10 @@
 import PrimaryButton from "./PrimaryButton";
 import styled from "styled-components";
 
-export default function Card({ onClick, imageSource, title, price, Icon }) {
+export default function Card({ onDelete, imageSource, title, price, Icon }) {
   return (
     <CardStyle>
-      <button onClick={onClick} className="buttonDelete">
+      <button onClick={onDelete} className="buttonDelete">
         <div className="icon-wrapper">{Icon && Icon}</div>
       </button>
       <div className="image">

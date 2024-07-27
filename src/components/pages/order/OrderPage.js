@@ -15,6 +15,11 @@ export default function OrderPage() {
     const UpdatedMenu = [NewProduct, ...menu]
     setMenu(UpdatedMenu)
   }
+  const handleDelete = (idOfProductToDelete) => {
+    const menuCopy = [...menu];
+    const NewMenu = menuCopy.filter((product) => product.id !== idOfProductToDelete)
+    setMenu(NewMenu);
+  };
 
 
   const UserContextValue = {
@@ -25,7 +30,7 @@ export default function OrderPage() {
     isAddSelected,
     setIsAddSelected,
     menu,
-    setMenu,
+    handleDelete,
     handleAddProduct,
   };
 
