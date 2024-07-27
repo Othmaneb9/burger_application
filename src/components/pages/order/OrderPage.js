@@ -9,18 +9,19 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
-  const [menu, setMenu] = useState(fakeMenu.LARGE)
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
 
   const handleAddProduct = (NewProduct) => {
-    const UpdatedMenu = [NewProduct, ...menu]
-    setMenu(UpdatedMenu)
-  }
+    const UpdatedMenu = [NewProduct, ...menu];
+    setMenu(UpdatedMenu);
+  };
   const handleDelete = (idOfProductToDelete) => {
     const menuCopy = [...menu];
-    const NewMenu = menuCopy.filter((product) => product.id !== idOfProductToDelete)
+    const NewMenu = menuCopy.filter(
+      (product) => product.id !== idOfProductToDelete
+    );
     setMenu(NewMenu);
   };
-
 
   const UserContextValue = {
     isModeAdmin,

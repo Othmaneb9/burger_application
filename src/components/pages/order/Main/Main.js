@@ -6,7 +6,7 @@ import UserContext from "../../../../context/UserContext"
 
 
 export default function Main() {
-  const {isModeAdmin, setIsModeAdmin} = useContext(UserContext)
+  const {isModeAdmin} = useContext(UserContext)
 
   return (
     <MainStyled>

@@ -49,7 +49,7 @@ export default function AddProduct() {
     <FormulaireStyle action="submit" onSubmit={handleSubmit}>
       <div className="image">
         {imageSource ? (
-          <img src={imageSource} alt="Image Inconnue" />
+          <img src={imageSource} alt="Inconnue" />
         ) : (
           <p>Aucune Image</p>
         )}

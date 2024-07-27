@@ -9,7 +9,8 @@ import UserContext from "../../../../../context/UserContext";
 
 export default function AdminTabs() {
   const { isOpen, setIsOpen } = useContext(OpenContext);
-  const { isAddSelected, setIsAddSelected, isEditSelected, setIsEditSelected } = useContext(UserContext);
+  const { isAddSelected, setIsAddSelected, isEditSelected, setIsEditSelected } =
+    useContext(UserContext);
 
   const SelectAddTabs = () => {
     setIsOpen(!isOpen);
