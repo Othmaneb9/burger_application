@@ -89,6 +89,7 @@ export default function AddProduct() {
     </FormulaireStyle>
   );
 }
+
 const FormulaireStyle = styled.form`
   display: flex;
   width: 880px;

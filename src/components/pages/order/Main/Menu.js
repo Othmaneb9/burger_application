@@ -6,7 +6,12 @@ import UserContext from "../../../../context/UserContext";
 import { TiDelete } from "react-icons/ti";
 
 export default function Menu() {
-  const { isModeAdmin, menu, handleDelete } = useContext(UserContext);
+  const { isModeAdmin, menu, handleDelete, setProductSelected } = useContext(UserContext);
+
+  const handleClick = (IdOfProduct) => {
+    const ProductSelected = menu.find((product) => product.id === IdOfProduct);
+    setProductSelected(ProductSelected);
+  };
 
   return (
     <MenuStyled className="menu">
@@ -18,6 +23,7 @@ export default function Menu() {
           price={formatPrice(price)}
           Icon={isModeAdmin && <TiDelete />}
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
         />
       ))}
     </MenuStyled>

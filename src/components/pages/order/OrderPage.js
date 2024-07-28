@@ -6,6 +6,12 @@ import UserContext from "../../../context/UserContext";
 import { fakeMenu } from "../../fakeData/fakeMenu";
 
 export default function OrderPage() {
+  const [productSelected, setProductSelected] = useState({
+    id: "",
+    title : "",
+    imageSource: "",
+    price: 0
+  });
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
@@ -22,6 +28,7 @@ export default function OrderPage() {
     );
     setMenu(NewMenu);
   };
+  
 
   const UserContextValue = {
     isModeAdmin,
@@ -33,6 +40,8 @@ export default function OrderPage() {
     menu,
     handleDelete,
     handleAddProduct,
+    productSelected,
+    setProductSelected,
   };
 
   return (

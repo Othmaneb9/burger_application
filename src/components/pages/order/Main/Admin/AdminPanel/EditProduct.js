@@ -1,8 +1,19 @@
-import React from 'react'
-import { HiCursorClick } from 'react-icons/hi'
+import React, { useContext } from 'react'
+import UserContext from '../../../../../../context/UserContext'
+import styled from 'styled-components'
 
 export default function EditProduct() {
+const {productSelected} = useContext(UserContext)
+
   return (
-    <div><p>Cliquer sur un produit pour le modifier <HiCursorClick/></p></div>
+    <FormulaireStyled>
+        {productSelected.title}<br/>
+        {productSelected.price}
+    </FormulaireStyled>
   )
 }
+
+const FormulaireStyled = styled.form`
+
+`
+
