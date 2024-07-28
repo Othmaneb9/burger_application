@@ -1,15 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components";
-import BottomButton from "../../../reusable-ui/BottomButton";
+import BottomButton from "../../../../reusable-ui/BottomButton";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import OpenContext from "../../../../context/OpenContext";
-import UserContext from "../../../../context/UserContext";
+import OpenContext from "../../../../../context/OpenContext";
+import UserContext from "../../../../../context/UserContext";
 
 export default function AdminTabs() {
   const { isOpen, setIsOpen } = useContext(OpenContext);
-  const { isAddSelected, setIsAddSelected, isEditSelected, setIsEditSelected } = useContext(UserContext);
+  const { isAddSelected, setIsAddSelected, isEditSelected, setIsEditSelected } =
+    useContext(UserContext);
 
   const SelectAddTabs = () => {
     setIsOpen(!isOpen);

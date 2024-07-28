@@ -10,7 +10,7 @@ export default function Input({ value, onChange, Icon, ...restProps }) {
 }
 
 const InputStyle = styled.div`
-  background-color: #ffffff;
+  background-color: #f5f5f7;
   display: flex;
   padding: 18px 24px;
   margin: 18px 0;
@@ -31,6 +31,7 @@ const InputStyle = styled.div`
   }
   input::placeholder {
     color: #d3d3d3;
-    background: white;
+    background: #f5f5f7;
+    border-color: #f5f5f7;
   }
 `;

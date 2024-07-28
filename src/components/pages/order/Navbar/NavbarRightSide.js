@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Profile from "./Profile";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
 import { toast } from "react-toastify";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import ToastAdmin from "./ToastAdmin";
 import UserContext from "../../../../context/UserContext";
 
@@ -14,7 +14,6 @@ export default function NavbarRightSide() {
   const displayToastNotification = () => {
     if(!isModeAdmin){
     toast.info("Mode admin activé", {
-      // icon: <FaUserSecret size={30} />,
       theme: "dark",
       position: "bottom-right",
       autoClose: 5000,

@@ -1,12 +1,12 @@
 import styled from "styled-components"
-import Admin from "../Admin/Admin"
+import Admin from "../Main/Admin/Admin"
 import Menu from "./Menu"
 import { useContext } from "react"
 import UserContext from "../../../../context/UserContext"
 
 
 export default function Main() {
-  const {isModeAdmin, setIsModeAdmin} = useContext(UserContext)
+  const {isModeAdmin} = useContext(UserContext)
 
   return (
     <MainStyled>
