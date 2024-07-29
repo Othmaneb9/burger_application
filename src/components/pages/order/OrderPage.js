@@ -15,7 +15,7 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const [menu, setMenu] = useState(fakeMenu.EMPTY);
 
   const handleAddProduct = (NewProduct) => {
     const UpdatedMenu = [NewProduct, ...menu];
@@ -27,7 +27,9 @@ export default function OrderPage() {
     );
     setMenu(NewMenu);
   };
-  
+  const resetMenu = () => {
+    setMenu(fakeMenu.LARGE)
+  }
 
   const UserContextValue = {
     isModeAdmin,
@@ -41,6 +43,7 @@ export default function OrderPage() {
     handleAddProduct,
     productSelected,
     setProductSelected,
+    resetMenu,
   };
 
   return (

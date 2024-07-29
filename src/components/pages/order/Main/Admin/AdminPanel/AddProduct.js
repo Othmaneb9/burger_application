@@ -17,9 +17,6 @@ const EMPTY_PRODUCT = {
 
 export default function AddProduct() {
   const { handleAddProduct } = useContext(UserContext);
-  const [title, setTitle] = useState("");
-  const [imageSource, setImageSource] = useState("");
-  const [price, setPrice] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);

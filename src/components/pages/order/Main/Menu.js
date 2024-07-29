@@ -4,14 +4,23 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import UserContext from "../../../../context/UserContext";
 import { TiDelete } from "react-icons/ti";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
-  const { isModeAdmin, menu, handleDelete, setProductSelected } = useContext(UserContext);
+  const { isModeAdmin, menu, handleDelete, resetMenu, setProductSelected } = useContext(UserContext);
 
   const handleClick = (IdOfProduct) => {
     const ProductSelected = menu.find((product) => product.id === IdOfProduct);
     setProductSelected(ProductSelected);
   };
+
+  if(menu.length === 0){
+    if(isModeAdmin){
+    return <EmptyMenuAdmin onReset={resetMenu} />
+    }
+    return <EmptyMenuClient/>
+  }
 
   return (
     <MenuStyled className="menu">
