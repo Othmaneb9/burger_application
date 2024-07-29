@@ -24,9 +24,7 @@ export default function AddProduct() {
 
     const NewProductToAdd = {
       id: crypto.randomUUID(),
-      title: newProduct.title,
-      imageSource: newProduct.imageSource,
-      price: newProduct.price,
+      ...newProduct,
     };
     handleAddProduct(NewProductToAdd);
     setNewProduct(EMPTY_PRODUCT);

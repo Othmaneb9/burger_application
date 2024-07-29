@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import styled from "styled-components";
 import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
@@ -9,10 +9,12 @@ import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
   const { isModeAdmin, menu, handleDelete, resetMenu, setProductSelected } = useContext(UserContext);
+  const inputBaliseRef = useRef();
 
   const handleClick = (IdOfProduct) => {
     const newProduct = menu.find((product) => product.id === IdOfProduct);
     setProductSelected(newProduct);
+    inputBaliseRef.current.focus();
   };
 
   if(menu.length === 0){

@@ -2,49 +2,30 @@ import React, { useContext } from "react";
 import UserContext from "../../../../../../context/UserContext";
 import styled from "styled-components";
 import Input from "../../../../../reusable-ui/Input";
-import { MdOutlineEuro } from "react-icons/md";
-import { BsFillCameraFill } from "react-icons/bs";
-import { FaHamburger } from "react-icons/fa";
+import ImagePreview from "./ImagePreview";
+import { getInputTextConfig } from "./AddProduct/getInputTextConfig";
 
 export default function EditProduct() {
-  const { productSelected, setProductSelected } = useContext(UserContext);
+  const { productSelected, setProductSelected, handleEdit } = useContext(UserContext);
 
   const handleChange = (event) => {
-    console.log(event.target.value);
+    const { name, value } = event.target;
+    const produitToEdit = { ...productSelected, [name]: value };
+    setProductSelected(produitToEdit)
+    handleEdit(produitToEdit)
   };
 
+  const inputTexts = getInputTextConfig(productSelected);
+
   return (
-    <FormulaireStyle action="submit">
-      <div className="image">
-        {productSelected.imageSource ? (
-          <img src={productSelected.imageSource} alt="Inconnue" />
-        ) : (
-          <p>Aucune Image</p>
-        )}
-      </div>
-      <div className="input-style">
-        <Input
-          value={productSelected.title}
-          Icon={<FaHamburger className="icon" />}
-          placeholder={"Nom du produit (ex : Super Burger)"}
-          onChange={handleChange}
-        />
-        <Input
-          value={productSelected.imageSource}
-          Icon={<BsFillCameraFill className="icon" />}
-          placeholder={
-            "Lien d'URL d'une image (ex : https://la-photo-de-mon-produit.png)"
-          }
-          onChange={handleChange}
-        />
-        <Input
-          value={productSelected.price ? productSelected.price : ""}
-          Icon={<MdOutlineEuro className="icon" />}
-          placeholder={"Prix"}
-          onChange={handleChange}
-        />
-      </div>
-    </FormulaireStyle>
+    <FormulaireStyle>
+    <ImagePreview imageSource={productSelected.imageSource} />
+    <div className="input-style">
+      {inputTexts.map((input) => (
+        <Input key={input.id} {...input} onChange={handleChange} />
+      ))}
+    </div>
+  </FormulaireStyle>
   );
 }
 
