@@ -1,40 +1,33 @@
-import React, { useContext } from 'react'
-import UserContext from '../../../../../../context/UserContext'
-import styled from 'styled-components'
-import Input from '../../../../../reusable-ui/Input';
-import { MdOutlineEuro } from 'react-icons/md';
-import { BsFillCameraFill } from 'react-icons/bs';
-import { FaHamburger } from 'react-icons/fa';
+import React, { useContext } from "react";
+import UserContext from "../../../../../../context/UserContext";
+import styled from "styled-components";
+import Input from "../../../../../reusable-ui/Input";
+import { MdOutlineEuro } from "react-icons/md";
+import { BsFillCameraFill } from "react-icons/bs";
+import { FaHamburger } from "react-icons/fa";
 
 export default function EditProduct() {
-const {productSelected, setProductSelected} = useContext(UserContext)
+  const { productSelected, setProductSelected } = useContext(UserContext);
 
-const handleChange1 = (event) => {
-    setProductSelected(event.target.value);
-  };
-  const handleChange2 = (event) => {
-    setProductSelected(event.target.value);
-  };
-  const handleChange3 = (event) => {
-    setProductSelected(event.target.value);
+  const handleChange = (event) => {
+    console.log(event.target.value);
   };
 
   return (
-    <FormulaireStyle action="submit" >
+    <FormulaireStyle action="submit">
       <div className="image">
         {productSelected.imageSource ? (
           <img src={productSelected.imageSource} alt="Inconnue" />
         ) : (
           <p>Aucune Image</p>
         )}
-        
       </div>
       <div className="input-style">
         <Input
           value={productSelected.title}
           Icon={<FaHamburger className="icon" />}
           placeholder={"Nom du produit (ex : Super Burger)"}
-          onChange={handleChange1}
+          onChange={handleChange}
         />
         <Input
           value={productSelected.imageSource}
@@ -42,17 +35,15 @@ const handleChange1 = (event) => {
           placeholder={
             "Lien d'URL d'une image (ex : https://la-photo-de-mon-produit.png)"
           }
-          onChange={handleChange2}
+          onChange={handleChange}
         />
         <Input
           value={productSelected.price ? productSelected.price : ""}
           Icon={<MdOutlineEuro className="icon" />}
           placeholder={"Prix"}
-          onChange={handleChange3}
+          onChange={handleChange}
         />
-       
       </div>
-    
     </FormulaireStyle>
   );
 }

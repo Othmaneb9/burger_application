@@ -11,8 +11,8 @@ export default function Menu() {
   const { isModeAdmin, menu, handleDelete, resetMenu, setProductSelected } = useContext(UserContext);
 
   const handleClick = (IdOfProduct) => {
-    const ProductSelected = menu.find((product) => product.id === IdOfProduct);
-    setProductSelected(ProductSelected);
+    const newProduct = menu.find((product) => product.id === IdOfProduct);
+    setProductSelected(newProduct);
   };
 
   if(menu.length === 0){
