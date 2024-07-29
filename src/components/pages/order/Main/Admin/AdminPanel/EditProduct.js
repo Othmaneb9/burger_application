@@ -7,7 +7,17 @@ import { BsFillCameraFill } from 'react-icons/bs';
 import { FaHamburger } from 'react-icons/fa';
 
 export default function EditProduct() {
-const {productSelected} = useContext(UserContext)
+const {productSelected, setProductSelected} = useContext(UserContext)
+
+const handleChange1 = (event) => {
+    setProductSelected(event.target.value);
+  };
+  const handleChange2 = (event) => {
+    setProductSelected(event.target.value);
+  };
+  const handleChange3 = (event) => {
+    setProductSelected(event.target.value);
+  };
 
   return (
     <FormulaireStyle action="submit" >
@@ -17,12 +27,14 @@ const {productSelected} = useContext(UserContext)
         ) : (
           <p>Aucune Image</p>
         )}
+        
       </div>
       <div className="input-style">
         <Input
           value={productSelected.title}
           Icon={<FaHamburger className="icon" />}
           placeholder={"Nom du produit (ex : Super Burger)"}
+          onChange={handleChange1}
         />
         <Input
           value={productSelected.imageSource}
@@ -30,11 +42,13 @@ const {productSelected} = useContext(UserContext)
           placeholder={
             "Lien d'URL d'une image (ex : https://la-photo-de-mon-produit.png)"
           }
+          onChange={handleChange2}
         />
         <Input
           value={productSelected.price ? productSelected.price : ""}
           Icon={<MdOutlineEuro className="icon" />}
           placeholder={"Prix"}
+          onChange={handleChange3}
         />
        
       </div>

@@ -22,8 +22,7 @@ export default function OrderPage() {
     setMenu(UpdatedMenu);
   };
   const handleDelete = (idOfProductToDelete) => {
-    const menuCopy = [...menu];
-    const NewMenu = menuCopy.filter(
+    const NewMenu = [...menu].filter(
       (product) => product.id !== idOfProductToDelete
     );
     setMenu(NewMenu);
