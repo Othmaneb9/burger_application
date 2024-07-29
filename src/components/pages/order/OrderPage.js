@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
@@ -16,6 +16,8 @@ export default function OrderPage() {
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
   const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const inputBaliseRef = useRef();
+
 
   const handleAddProduct = (NewProduct) => {
     const UpdatedMenu = [NewProduct, ...menu];
@@ -53,6 +55,7 @@ export default function OrderPage() {
     productSelected,
     setProductSelected,
     resetMenu,
+    inputBaliseRef,
   };
 
   return (

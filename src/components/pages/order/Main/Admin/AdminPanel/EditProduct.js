@@ -6,26 +6,32 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextConfig } from "./AddProduct/getInputTextConfig";
 
 export default function EditProduct() {
-  const { productSelected, setProductSelected, handleEdit } = useContext(UserContext);
+  const { productSelected, setProductSelected, handleEdit, inputBaliseRef } =
+    useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     const produitToEdit = { ...productSelected, [name]: value };
-    setProductSelected(produitToEdit)
-    handleEdit(produitToEdit)
+    setProductSelected(produitToEdit);
+    handleEdit(produitToEdit);
   };
 
   const inputTexts = getInputTextConfig(productSelected);
 
   return (
     <FormulaireStyle>
-    <ImagePreview imageSource={productSelected.imageSource} />
-    <div className="input-style">
-      {inputTexts.map((input) => (
-        <Input key={input.id} {...input} onChange={handleChange} />
-      ))}
-    </div>
-  </FormulaireStyle>
+      <ImagePreview imageSource={productSelected.imageSource} />
+      <div className="input-style">
+        {inputTexts.map((input) => (
+          <Input
+            key={input.id}
+            {...input}
+            onChange={handleChange}
+            ref={input.name === "title" ? inputBaliseRef : null}
+          />
+        ))}
+      </div>
+    </FormulaireStyle>
   );
 }
 
