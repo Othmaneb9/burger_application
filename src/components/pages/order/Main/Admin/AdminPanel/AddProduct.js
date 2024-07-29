@@ -6,8 +6,8 @@ import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import UserContext from "../../../../../../context/UserContext";
-import { FiCheck } from "react-icons/fi";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -78,11 +78,7 @@ export default function AddProduct() {
           type="submit"
         />
       </div>
-      {isSubmitted && (
-        <p>
-          <FiCheck /> Ajouté avec succès
-        </p>
-      )}
+      {isSubmitted && <SubmitMessage/>}
     </FormulaireStyle>
   );
 }
