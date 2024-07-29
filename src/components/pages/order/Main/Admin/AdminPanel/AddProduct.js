@@ -7,6 +7,7 @@ import { MdOutlineEuro } from "react-icons/md";
 import PrimaryButton from "../../../../../reusable-ui/PrimaryButton";
 import UserContext from "../../../../../../context/UserContext";
 import { FiCheck } from "react-icons/fi";
+import ImagePreview from "./ImagePreview";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -31,7 +32,7 @@ export default function AddProduct() {
       price: newProduct.price,
     };
     handleAddProduct(NewProductToAdd);
-    setNewProduct("");
+    setNewProduct(EMPTY_PRODUCT);
 
     setIsSubmitted(true);
     setTimeout(() => {
@@ -40,20 +41,13 @@ export default function AddProduct() {
   };
 
   const handleChange = (event) => {
-    const newValue = event.target.value;
-    const name = event.target.name
-    setNewProduct({ ...newProduct, [name]: newValue });
+    const {value, name} = event.target;
+    setNewProduct({ ...newProduct, [name]: value });
   };
 
   return (
     <FormulaireStyle action="submit" onSubmit={handleSubmit}>
-      <div className="image">
-        {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} alt="Inconnue" />
-        ) : (
-          <p>Aucune Image</p>
-        )}
-      </div>
+      <ImagePreview imageSource={newProduct.imageSource}/>
       <div className="input-style">
         <Input
           name="title"
@@ -98,27 +92,6 @@ const FormulaireStyle = styled.form`
   width: 880px;
   height: 160px;
 
-  .image {
-    margin-right: 20px;
-    margin-top: 18px;
-    border: 1px solid #e4e5e9;
-    border-radius: 5px;
-    width: 215px;
-    height: 120px;
-    img {
-      width: 100px;
-      height: auto;
-    }
-
-    p {
-      color: #93a2b1;
-      font-family: "Open Sans";
-      font-size: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
   .input-style {
     width: 645px;
     height: 121px;
