@@ -3,12 +3,13 @@ import styled from "styled-components";
 import MenuCommandeVide from "./MenuCommandeVide";
 import BottomBasket from "./BottomBasket";
 import TotalBasket from "./TotalBasket";
+import AddBasketProduct from "./AddBasketProduct";
 
 export default function Basket() {
   return (
     <BasketStyled>
       <TotalBasket />
-      <MenuCommandeVide />
+      <AddBasketProduct />
       <BottomBasket />
     </BasketStyled>
   );

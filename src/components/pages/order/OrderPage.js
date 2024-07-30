@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import UserContext from "../../../context/UserContext";
-import { fakeMenu } from "../../fakeData/fakeMenu";
 import { useMenu } from "../../../hooks/useMenu";
+import { fakeBasket } from "../../fakeData/fakeBasket";
 
 export default function OrderPage() {
   const [productSelected, setProductSelected] = useState({
@@ -13,6 +13,17 @@ export default function OrderPage() {
     imageSource: "",
     price: 0,
   });
+  const [basket, setBasket] = useState(fakeBasket.MEDIUM);
+
+
+
+  const handleAddBasket = (NewProduct) => {
+    const newBasket = [NewProduct, ...basket];
+    setBasket(newBasket);
+  }
+
+
+
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
@@ -23,7 +34,6 @@ export default function OrderPage() {
     handleEdit,
     menu,
     resetMenu,
-    setMenu,
   } = useMenu();
 
   const UserContextValue = {
@@ -41,6 +51,8 @@ export default function OrderPage() {
     setProductSelected,
     resetMenu,
     inputBaliseRef,
+    basket,
+handleAddBasket,
   };
 
   return (
