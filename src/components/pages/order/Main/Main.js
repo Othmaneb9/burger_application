@@ -3,7 +3,7 @@ import Admin from "../Main/Admin/Admin";
 import Menu from "./Menu";
 import { useContext } from "react";
 import UserContext from "../../../../context/UserContext";
-import Basket from "./Basket";
+import Basket from "./Basket/Basket";
 
 export default function Main() {
   const { isModeAdmin } = useContext(UserContext);
