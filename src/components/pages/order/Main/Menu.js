@@ -4,8 +4,8 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import UserContext from "../../../../context/UserContext";
 import { TiDelete } from "react-icons/ti";
-import EmptyMenuAdmin from "./EmptyMenuAdmin";
-import EmptyMenuClient from "./EmptyMenuClient";
+import EmptyMenuAdmin from "./Empty/EmptyMenuAdmin";
+import EmptyMenuClient from "./Empty/EmptyMenuClient";
 
 export default function Menu() {
   const {
@@ -20,7 +20,6 @@ export default function Menu() {
   const handleClick = async (IdOfProduct) => {
     const newProduct = menu.find((product) => product.id === IdOfProduct);
     await setProductSelected(newProduct);
-    inputBaliseRef.current.focus();
   };
 
   if (menu.length === 0) {
@@ -50,8 +49,7 @@ export default function Menu() {
 const MenuStyled = styled.div`
   background: #ffffff;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
