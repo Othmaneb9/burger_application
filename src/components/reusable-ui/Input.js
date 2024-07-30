@@ -1,14 +1,15 @@
+import React from "react";
 import styled from "styled-components";
 
-export default function Input({ value, onChange, Icon, ...restProps }) {
+const Input = React.forwardRef(({ value, onChange, Icon, ...restProps }, ref) => {
   return (
-    <InputStyle>
+    <InputStyle >
       {Icon && Icon}
-      <input value={value} onChange={onChange} type="text" {...restProps} />
+      <input ref={ref} value={value} onChange={onChange} type="text" {...restProps} />
     </InputStyle>
   );
-}
-
+})
+export default Input;
 const InputStyle = styled.div`
   background-color: #f5f5f7;
   display: flex;

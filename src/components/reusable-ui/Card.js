@@ -1,9 +1,9 @@
 import PrimaryButton from "./PrimaryButton";
 import styled from "styled-components";
 
-export default function Card({ onDelete, imageSource, title, price, Icon }) {
+export default function Card({ onDelete, onClick, imageSource, title, price, Icon }) {
   return (
-    <CardStyle>
+    <CardStyle onClick={onClick}>
       <button onClick={onDelete} className="buttonDelete">
         <div className="icon-wrapper">{Icon && Icon}</div>
       </button>
@@ -34,6 +34,33 @@ const CardStyle = styled.div`
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: 15px;
   position: relative;
+  cursor: pointer;
+
+  &:hover {
+    width: 212px;
+    height: 316px;
+    box-shadow: 0px 0px 8px 0px rgb(255 154 35);
+
+  }
+  &:active {
+    background: #ff9a23;
+
+    .left-description{
+      color: white !important;
+    }
+    .primary-button{
+      background-color: white;
+      color: #FFA01B;
+    }
+
+    &:active svg{
+      color: white !important;
+    }
+  }
+
+
+
+
 
   .buttonDelete {
     width: 30px;

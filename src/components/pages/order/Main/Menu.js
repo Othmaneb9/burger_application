@@ -4,9 +4,31 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import UserContext from "../../../../context/UserContext";
 import { TiDelete } from "react-icons/ti";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 export default function Menu() {
-  const { isModeAdmin, menu, handleDelete } = useContext(UserContext);
+  const {
+    isModeAdmin,
+    menu,
+    inputBaliseRef,
+    handleDelete,
+    resetMenu,
+    setProductSelected,
+  } = useContext(UserContext);
+
+  const handleClick = async (IdOfProduct) => {
+    const newProduct = menu.find((product) => product.id === IdOfProduct);
+    await setProductSelected(newProduct);
+    inputBaliseRef.current.focus();
+  };
+
+  if (menu.length === 0) {
+    if (isModeAdmin) {
+      return <EmptyMenuAdmin onReset={resetMenu} />;
+    }
+    return <EmptyMenuClient />;
+  }
 
   return (
     <MenuStyled className="menu">
@@ -18,6 +40,7 @@ export default function Menu() {
           price={formatPrice(price)}
           Icon={isModeAdmin && <TiDelete />}
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
         />
       ))}
     </MenuStyled>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
@@ -6,22 +6,40 @@ import UserContext from "../../../context/UserContext";
 import { fakeMenu } from "../../fakeData/fakeMenu";
 
 export default function OrderPage() {
+  const [productSelected, setProductSelected] = useState({
+    id: "",
+    title : "",
+    imageSource: "",
+    price: 0
+  });
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
   const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const inputBaliseRef = useRef();
+
 
   const handleAddProduct = (NewProduct) => {
     const UpdatedMenu = [NewProduct, ...menu];
     setMenu(UpdatedMenu);
   };
   const handleDelete = (idOfProductToDelete) => {
-    const menuCopy = [...menu];
-    const NewMenu = menuCopy.filter(
+    const NewMenu = [...menu].filter(
       (product) => product.id !== idOfProductToDelete
     );
     setMenu(NewMenu);
   };
+  const handleEdit = (productToEdit) => {
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const indexOfProductToEdit = menu.findIndex((product) => product.id === productToEdit.id)
+    menuCopy[indexOfProductToEdit] = productToEdit;
+    setMenu(menuCopy)
+  }
+
+
+  const resetMenu = () => {
+    setMenu(fakeMenu.LARGE)
+  }
 
   const UserContextValue = {
     isModeAdmin,
@@ -33,6 +51,11 @@ export default function OrderPage() {
     menu,
     handleDelete,
     handleAddProduct,
+    handleEdit,
+    productSelected,
+    setProductSelected,
+    resetMenu,
+    inputBaliseRef,
   };
 
   return (
