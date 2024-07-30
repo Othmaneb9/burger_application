@@ -4,8 +4,8 @@ import { formatPrice } from "../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import UserContext from "../../../../context/UserContext";
 import { TiDelete } from "react-icons/ti";
-import EmptyMenuAdmin from "./EmptyMenuAdmin";
-import EmptyMenuClient from "./EmptyMenuClient";
+import EmptyMenuAdmin from "./Empty/EmptyMenuAdmin";
+import EmptyMenuClient from "./Empty/EmptyMenuClient";
 
 export default function Menu() {
   const {
