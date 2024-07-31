@@ -19,4 +19,5 @@ export default createContext({
   inputBaliseRef: () => {},
   basket: [],
   handleAddBasket: () => {},
+  handleDeleteBasket: () => {},
 });

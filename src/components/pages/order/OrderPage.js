@@ -27,6 +27,13 @@ export default function OrderPage() {
     await setBasket(newBasket);
   };
 
+  const handleDeleteBasket = async (newDelete) => {
+    const deleteBasket = [...basket].filter(
+      (product) => newDelete !== product.id
+    );
+    await setBasket(deleteBasket);
+  };
+
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
@@ -51,6 +58,7 @@ export default function OrderPage() {
     inputBaliseRef,
     basket,
     handleAddBasket,
+    handleDeleteBasket,
   };
 
   return (
