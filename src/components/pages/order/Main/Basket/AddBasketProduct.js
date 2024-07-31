@@ -5,20 +5,30 @@ import CardBasket from "./CardBasket";
 import { formatPrice } from "../../../../../utils/maths";
 
 export default function AddBasketProduct() {
-  const { basket, handleDeleteBasket } = useContext(UserContext);
+  const {
+    basket,
+    handleDeleteBasket,
+  } = useContext(UserContext);
+
+  const handleClick = (event) => {
+    
+  };
 
   return (
     <AddBasketStyled>
-      {basket.map(({ id, imageSource, title, price, quantity }) => (
-        <CardBasket
-          key={id}
+      {basket.map(({ id, imageSource, title, price, quantity }) => {
+        return (<div key={id}>
+          <CardBasket
           imageSource={imageSource ? imageSource : "/img/coming-soon.png"}
           title={title}
           price={formatPrice(price)}
           quantity={quantity}
           onDelete={() => handleDeleteBasket(id)}
+          onClick={handleClick}
         />
-      ))}
+        </div>
+      )
+})}
     </AddBasketStyled>
   );
 }

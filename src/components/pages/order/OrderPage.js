@@ -14,24 +14,27 @@ export default function OrderPage() {
     price: 0,
   });
   const [basket, setBasket] = useState(fakeBasket.EMPTY);
-  const [quantity, setQuantity] = useState(1);
 
   const handleAddBasket = async (NewProduct) => {
     const nouveauProduit = menu.find((produit) => NewProduct === produit.id);
-    if (nouveauProduit) {
-      const newQuantity = 1 + quantity;
-      await setQuantity(newQuantity);
-    }
-
     const newBasket = [nouveauProduit, ...basket];
     await setBasket(newBasket);
   };
 
   const handleDeleteBasket = async (newDelete) => {
-  const deleteBasket = [...basket].filter(
-    (product) => newDelete !== product.id
+    const deleteBasket = [...basket].filter(
+      (product) => newDelete !== product.id
     );
     await setBasket(deleteBasket);
+  };
+  const handleEditBasket = (productToEdit) => {
+    const basketCopy = JSON.parse(JSON.stringify(basket));
+    const indexOfProductToEdit = basket.findIndex(
+      (product) => product.id === productToEdit.id
+    );
+    console.log(indexOfProductToEdit);
+    basketCopy[indexOfProductToEdit] = productToEdit;
+    setBasket(basketCopy);
   };
 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
@@ -59,6 +62,7 @@ export default function OrderPage() {
     basket,
     handleAddBasket,
     handleDeleteBasket,
+    handleEditBasket,
   };
 
   return (

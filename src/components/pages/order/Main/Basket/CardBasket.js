@@ -8,9 +8,10 @@ export default function CardBasket({
   price,
   quantity,
   onDelete,
+  onClick,
 }) {
   return (
-    <CardBasketStyle>
+    <CardBasketStyle onClick={onClick}>
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -39,6 +40,10 @@ const CardBasketStyle = styled.div`
   cursor: pointer;
   margin-left: 16px;
   margin-top: 20px;
+
+  &:active {
+    background: #ffa01b;
+  }
   img {
     width: 85px;
     height: 70px;
@@ -80,6 +85,10 @@ const CardBasketStyle = styled.div`
       font-family: "Open Sans";
       position: absolute;
       top: 50px;
+      
+      &:active{
+      color: white;
+    }
     }
     .quantity {
       width: 29px;
@@ -101,14 +110,14 @@ const CardBasketStyle = styled.div`
       cursor: pointer;
       border: none;
       position: absolute;
-      left : 120px;
-      svg{
+      left: 120px;
+      svg {
         width: 24px;
         height: 24px;
       }
     }
     &:hover .button-delete {
-    opacity: 1; 
+      opacity: 1;
+    }
   }
-  }
-`
+`;
