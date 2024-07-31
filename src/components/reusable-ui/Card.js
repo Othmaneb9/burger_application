@@ -1,7 +1,7 @@
 import PrimaryButton from "./PrimaryButton";
 import styled from "styled-components";
 
-export default function Card({ onDelete, onClick, imageSource, title, price, Icon }) {
+export default function Card({ onDelete, onClick, imageSource, title, price, Icon, onAddProduct }) {
   return (
     <CardStyle onClick={onClick}>
       <button onClick={onDelete} className="buttonDelete">
@@ -15,7 +15,7 @@ export default function Card({ onDelete, onClick, imageSource, title, price, Ico
         <div className="description">
           <div className="left-description">{price}</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" label={"Ajouter"} />
+            <PrimaryButton onClick={onAddProduct} className="primary-button" label={"Ajouter"} />
           </div>
         </div>
       </div>

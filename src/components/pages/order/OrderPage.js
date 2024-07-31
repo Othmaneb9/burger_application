@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import UserContext from "../../../context/UserContext";
-import { fakeMenu } from "../../fakeData/fakeMenu";
 import { useMenu } from "../../../hooks/useMenu";
+import { fakeBasket } from "../../fakeData/fakeBasket";
 
 export default function OrderPage() {
   const [productSelected, setProductSelected] = useState({
@@ -13,18 +13,33 @@ export default function OrderPage() {
     imageSource: "",
     price: 0,
   });
+  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleAddBasket = async (NewProduct) => {
+    const nouveauProduit = menu.find((produit) => NewProduct === produit.id);
+    if (nouveauProduit) {
+      const newQuantity = 1 + quantity;
+      await setQuantity(newQuantity);
+    }
+
+    const newBasket = [nouveauProduit, ...basket];
+    await setBasket(newBasket);
+  };
+
+  const handleDeleteBasket = async (newDelete) => {
+  const deleteBasket = [...basket].filter(
+    (product) => newDelete !== product.id
+    );
+    await setBasket(deleteBasket);
+  };
+
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
   const inputBaliseRef = useRef();
-  const {
-    handleAddProduct,
-    handleDelete,
-    handleEdit,
-    menu,
-    resetMenu,
-    setMenu,
-  } = useMenu();
+  const { handleAddProduct, handleDelete, handleEdit, menu, resetMenu } =
+    useMenu();
 
   const UserContextValue = {
     isModeAdmin,
@@ -41,6 +56,9 @@ export default function OrderPage() {
     setProductSelected,
     resetMenu,
     inputBaliseRef,
+    basket,
+    handleAddBasket,
+    handleDeleteBasket,
   };
 
   return (

@@ -8,12 +8,14 @@ export const useMenu = () => {
     const UpdatedMenu = [NewProduct, ...menu];
     setMenu(UpdatedMenu);
   };
+  
   const handleDelete = (idOfProductToDelete) => {
     const NewMenu = [...menu].filter(
       (product) => product.id !== idOfProductToDelete
     );
     setMenu(NewMenu);
   };
+
   const handleEdit = (productToEdit) => {
     const menuCopy = JSON.parse(JSON.stringify(menu));
     const indexOfProductToEdit = menu.findIndex(

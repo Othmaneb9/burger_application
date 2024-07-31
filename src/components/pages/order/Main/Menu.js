@@ -11,10 +11,10 @@ export default function Menu() {
   const {
     isModeAdmin,
     menu,
-    inputBaliseRef,
     handleDelete,
     resetMenu,
     setProductSelected,
+    handleAddBasket,
   } = useContext(UserContext);
 
   const handleClick = async (IdOfProduct) => {
@@ -40,6 +40,7 @@ export default function Menu() {
           Icon={isModeAdmin && <TiDelete />}
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
+          onAddProduct={() => handleAddBasket(id)}
         />
       ))}
     </MenuStyled>
