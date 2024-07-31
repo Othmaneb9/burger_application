@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Card({ onDelete, onClick, imageSource, title, price, Icon, onAddProduct }) {
   return (
     <CardStyle onClick={onClick}>
-      <button onSubmit={onAddProduct} onClick={onDelete} className="buttonDelete">
+      <button onClick={onDelete} className="buttonDelete">
         <div className="icon-wrapper">{Icon && Icon}</div>
       </button>
       <div className="image">
@@ -15,7 +15,7 @@ export default function Card({ onDelete, onClick, imageSource, title, price, Ico
         <div className="description">
           <div className="left-description">{price}</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" label={"Ajouter"} />
+            <PrimaryButton onClick={onAddProduct} className="primary-button" label={"Ajouter"} />
           </div>
         </div>
       </div>

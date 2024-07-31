@@ -46,18 +46,14 @@ img {
 
   .title {
     font-size: 24px;
-    bottom: 10px;
     font-weight: 700;
     color: #17161a;
     text-align: left;
     overflow: hidden;
     width: 100%;
+    height: 32px;
     font-family: "Amatic SC", cursive;
-  }
-
-  .description {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  }   
 
     .price {
       display: flex;
@@ -71,8 +67,9 @@ img {
       font-weight: 500;
       color: #ffa01b;
       font-family: "Open Sans";
+      position: absolute;
+      top: 50px;
     }
   }
-}
 `;
 

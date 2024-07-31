@@ -13,12 +13,14 @@ export default function OrderPage() {
     imageSource: "",
     price: 0,
   });
-  const [basket, setBasket] = useState(fakeBasket.LARGE);
+  const [basket, setBasket] = useState(fakeBasket.EMPTY);
 
 
 
   const handleAddBasket = (NewProduct) => {
-    const newBasket = [NewProduct, ...basket];
+    const nouveauProduit = menu.find((produit) => NewProduct === produit.id);
+    console.log('Nouveau Produit :', )
+    const newBasket = [nouveauProduit, ...basket];
     setBasket(newBasket);
   }
 
