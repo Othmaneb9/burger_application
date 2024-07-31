@@ -5,12 +5,17 @@ import BottomBasket from "./BottomBasket";
 import TotalBasket from "./TotalBasket";
 import AddBasketProduct from "./AddBasketProduct";
 import UserContext from "../../../../../context/UserContext";
+import { formatPrice } from "../../../../../utils/maths";
 
 export default function Basket() {
   const {basket} = useContext(UserContext)
+
+  const sumToPay = basket.reduce((total, basketProduct) => {
+    return total + basketProduct.price
+  }, 0)
   return (
     <BasketStyled>
-      <TotalBasket />
+      <TotalBasket total={formatPrice(sumToPay)}/>
       {basket.length === 0 ? <MenuCommandeVide/> : <AddBasketProduct />}
       <BottomBasket />
     </BasketStyled>

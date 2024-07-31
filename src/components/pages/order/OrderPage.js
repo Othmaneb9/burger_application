@@ -18,7 +18,7 @@ export default function OrderPage() {
 
   const handleAddBasket = async (NewProduct) => {
     const nouveauProduit = menu.find((produit) => NewProduct === produit.id);
-    if (basket.id === basket.NewProduct) {
+    if (nouveauProduit) {
       const newQuantity = 1 + quantity;
       await setQuantity(newQuantity);
     }
@@ -28,8 +28,8 @@ export default function OrderPage() {
   };
 
   const handleDeleteBasket = async (newDelete) => {
-    const deleteBasket = [...basket].filter(
-      (product) => newDelete !== product.id
+  const deleteBasket = [...basket].filter(
+    (product) => newDelete !== product.id
     );
     await setBasket(deleteBasket);
   };

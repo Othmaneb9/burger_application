@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export default function TotalBasket() {
+export default function TotalBasket({total}) {
   return (
     <TotalBasketStyled className="total">
       <div className="total-text">
-        <div>Total</div> <div>0,00€</div>
+        <div>Total</div> <div>{total}</div>
       </div>
     </TotalBasketStyled>
   );
