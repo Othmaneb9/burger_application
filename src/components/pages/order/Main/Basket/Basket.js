@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import MenuCommandeVide from "./MenuCommandeVide";
 import BottomBasket from "./BottomBasket";
 import TotalBasket from "./TotalBasket";
 import AddBasketProduct from "./AddBasketProduct";
+import UserContext from "../../../../../context/UserContext";
 
 export default function Basket() {
+  const {basket} = useContext(UserContext)
   return (
     <BasketStyled>
       <TotalBasket />
-      <AddBasketProduct />
+      {basket.length === 0 ? <MenuCommandeVide/> : <AddBasketProduct />}
       <BottomBasket />
     </BasketStyled>
   );

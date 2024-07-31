@@ -14,29 +14,25 @@ export default function OrderPage() {
     price: 0,
   });
   const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [quantity, setQuantity] = useState(1);
 
-
-
-  const handleAddBasket = (NewProduct) => {
+  const handleAddBasket = async (NewProduct) => {
     const nouveauProduit = menu.find((produit) => NewProduct === produit.id);
-    console.log('Nouveau Produit :', )
+    if (basket.id === basket.NewProduct) {
+      const newQuantity = 1 + quantity;
+      await setQuantity(newQuantity);
+    }
+
     const newBasket = [nouveauProduit, ...basket];
-    setBasket(newBasket);
-  }
-
-
+    await setBasket(newBasket);
+  };
 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
   const inputBaliseRef = useRef();
-  const {
-    handleAddProduct,
-    handleDelete,
-    handleEdit,
-    menu,
-    resetMenu,
-  } = useMenu();
+  const { handleAddProduct, handleDelete, handleEdit, menu, resetMenu } =
+    useMenu();
 
   const UserContextValue = {
     isModeAdmin,
@@ -54,7 +50,7 @@ export default function OrderPage() {
     resetMenu,
     inputBaliseRef,
     basket,
-handleAddBasket,
+    handleAddBasket,
   };
 
   return (
