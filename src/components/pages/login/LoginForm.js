@@ -5,13 +5,15 @@ import { BsPersonCircle } from "react-icons/bs";
 import Input from "../../reusable-ui/Input";
 import PrimaryButton from "../../reusable-ui/PrimaryButton";
 import { SlArrowRight } from "react-icons/sl";
+import { createUser } from "../../../api/user";
 
 export default function LoginForm() {
   const [prenom, setPrenom] = useState("");
   const navigate = useNavigate();
-
   const handleSubmit = (event) => {
     event.preventDefault();
+    createUser(prenom)
+
     setPrenom("");
     navigate(`/OrderPage/${prenom}`);
   };

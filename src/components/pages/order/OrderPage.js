@@ -5,6 +5,7 @@ import Main from "./Main/Main";
 import UserContext from "../../../context/UserContext";
 import { useMenu } from "../../../hooks/useMenu";
 import { fakeBasket } from "../../fakeData/fakeBasket";
+import { getUser } from "../../../api/user";
 
 export default function OrderPage() {
   const [productSelected, setProductSelected] = useState({
@@ -64,6 +65,12 @@ export default function OrderPage() {
     handleDeleteBasket,
     handleEditBasket,
   };
+
+  getUser("Alex")
+
+
+
+
 
   return (
     <UserContext.Provider value={UserContextValue}>
