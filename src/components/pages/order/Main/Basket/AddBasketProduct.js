@@ -5,21 +5,20 @@ import CardBasket from "./CardBasket";
 import { formatPrice } from "../../../../../utils/maths";
 
 export default function AddBasketProduct() {
-  const {productSelected, handleEdit, setProductSelected, basket, handleDeleteBasket } = useContext(UserContext);
+  const {
+    basket,
+    handleDeleteBasket,
+  } = useContext(UserContext);
 
   const handleClick = (event) => {
-    const { name, value } = event.target;
-    const produitToEdit = { ...productSelected, [name]: value };
-    setProductSelected(produitToEdit);
-    handleEdit(produitToEdit);
-  }
-
+    
+  };
 
   return (
     <AddBasketStyled>
-      {basket.map(({ id, imageSource, title, price, quantity }) => (
-        <CardBasket
-          key={id}
+      {basket.map(({ id, imageSource, title, price, quantity }) => {
+        return (<div key={id}>
+          <CardBasket
           imageSource={imageSource ? imageSource : "/img/coming-soon.png"}
           title={title}
           price={formatPrice(price)}
@@ -27,7 +26,9 @@ export default function AddBasketProduct() {
           onDelete={() => handleDeleteBasket(id)}
           onClick={handleClick}
         />
-      ))}
+        </div>
+      )
+})}
     </AddBasketStyled>
   );
 }
