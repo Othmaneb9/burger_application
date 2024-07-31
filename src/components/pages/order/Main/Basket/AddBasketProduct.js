@@ -6,7 +6,6 @@ import { formatPrice } from "../../../../../utils/maths";
 
 export default function AddBasketProduct() {
   const { basket, handleDeleteBasket } = useContext(UserContext);
-  
 
   return (
     <AddBasketStyled>
@@ -16,8 +15,8 @@ export default function AddBasketProduct() {
           imageSource={imageSource ? imageSource : "/img/coming-soon.png"}
           title={title}
           price={formatPrice(price)}
-          quantity={quantity} 
-          onDelete={() => handleDeleteBasket(id)} 
+          quantity={quantity}
+          onDelete={() => handleDeleteBasket(id)}
         />
       ))}
     </AddBasketStyled>
