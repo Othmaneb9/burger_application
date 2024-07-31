@@ -5,7 +5,15 @@ import CardBasket from "./CardBasket";
 import { formatPrice } from "../../../../../utils/maths";
 
 export default function AddBasketProduct() {
-  const { basket, handleDeleteBasket } = useContext(UserContext);
+  const {productSelected, handleEdit, setProductSelected, basket, handleDeleteBasket } = useContext(UserContext);
+
+  const handleClick = (event) => {
+    const { name, value } = event.target;
+    const produitToEdit = { ...productSelected, [name]: value };
+    setProductSelected(produitToEdit);
+    handleEdit(produitToEdit);
+  }
+
 
   return (
     <AddBasketStyled>
@@ -17,6 +25,7 @@ export default function AddBasketProduct() {
           price={formatPrice(price)}
           quantity={quantity}
           onDelete={() => handleDeleteBasket(id)}
+          onClick={handleClick}
         />
       ))}
     </AddBasketStyled>
