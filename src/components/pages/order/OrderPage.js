@@ -13,7 +13,7 @@ export default function OrderPage() {
     imageSource: "",
     price: 0,
   });
-  const [basket, setBasket] = useState(fakeBasket.MEDIUM);
+  const [basket, setBasket] = useState(fakeBasket.LARGE);
 
 
 

@@ -20,4 +20,5 @@ const BottomBasketStyled = styled.div`
   color: white;
   margin-top: 22px;
   border-radius: 0px 0px 0px 15px;
+  overflow: hidden;
 `;

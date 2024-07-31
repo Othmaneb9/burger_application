@@ -5,15 +5,13 @@ import CardBasket from "./CardBasket";
 import { formatPrice } from "../../../../../utils/maths";
 
 export default function AddBasketProduct() {
-
-
   const { handleAddBasket, basket } = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    handleAddBasket()
-  }
+    handleAddBasket();
+  };
 
   return (
     <AddBasketStyled>
@@ -29,5 +27,12 @@ export default function AddBasketProduct() {
   );
 }
 const AddBasketStyled = styled.div`
-  height: 80%;
+  height: 654px;
+  display: grid;
+  grid-template-rows: repeat(4, 106px);
+  overflow: hidden;
+  overflow-y: scroll;
+
+  scrollbar-width: none;
+  position: relative;
 `;
