@@ -7,8 +7,6 @@ export const getUser = async (idUser) => {
     const docSnap = await getDoc(docRef)
     if (docSnap.exists()) {
         return docSnap.data();  // retourne les données de l'utilisateur si elles existent
-      } else {
-        return null;  // retourne null si l'utilisateur n'existe pas
       }
  }
 
@@ -22,3 +20,11 @@ export const createUser = (userId) => {
     setDoc(docRef, nourriture)
 
  }
+
+ export const authenticateUser = async (userId) => { 
+    const existingUser = await getUser(userId);
+    if (existingUser) {
+    } else {
+      await createUser(userId);
+    }
+  }
