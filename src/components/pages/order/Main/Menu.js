@@ -9,6 +9,7 @@ import EmptyMenuClient from "./Empty/EmptyMenuClient";
 
 export default function Menu() {
   const {
+    prenom,
     isModeAdmin,
     menu,
     handleDelete,
@@ -17,7 +18,7 @@ export default function Menu() {
     handleAddBasket,
   } = useContext(UserContext);
 
-  const handleClick = async (IdOfProduct) => {
+  const handleClick = async (IdOfProduct, ) => {
     const newProduct = menu.find((product) => product.id === IdOfProduct);
     await setProductSelected(newProduct);
   };
@@ -38,7 +39,7 @@ export default function Menu() {
           title={title}
           price={formatPrice(price)}
           Icon={isModeAdmin && <TiDelete />}
-          onDelete={() => handleDelete(id)}
+          onDelete={() => handleDelete(id, prenom)}
           onClick={() => handleClick(id)}
           onAddProduct={() => handleAddBasket(id)}
         />

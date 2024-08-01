@@ -11,11 +11,12 @@ export const useMenu = () => {
     syncBothMenus(username, UpdatedMenu)
   };
   
-  const handleDelete = (idOfProductToDelete) => {
+  const handleDelete = (idOfProductToDelete, username) => {
     const NewMenu = [...menu].filter(
       (product) => product.id !== idOfProductToDelete
     );
     setMenu(NewMenu);
+    syncBothMenus(username, NewMenu)
   };
 
   const handleEdit = (productToEdit) => {
