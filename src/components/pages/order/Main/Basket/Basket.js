@@ -10,6 +10,7 @@ import { formatPrice } from "../../../../../utils/maths";
 export default function Basket() {
   const {basket, menu} = useContext(UserContext)
   if(menu === undefined){<span>Chargement ...</span>}
+  
   const sumToPay = basket.reduce((total, basketProduct) => {
     return total + basketProduct.price
   }, 0)
