@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
@@ -7,6 +7,7 @@ import { useMenu } from "../../../hooks/useMenu";
 import { fakeBasket } from "../../fakeData/fakeBasket";
 import { getUser } from "../../../api/user";
 import { useParams } from "react-router-dom";
+import { getMenu } from "../../../api/product";
 
 export default function OrderPage() {
   const [productSelected, setProductSelected] = useState({
@@ -42,10 +43,19 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
-  const {prenom} =useParams()
+  const { prenom } = useParams();
   const inputBaliseRef = useRef();
-  const { handleAddProduct, handleDelete, handleEdit, menu, resetMenu } =
+  const { handleAddProduct, handleDelete, handleEdit, menu, setMenu, resetMenu } =
     useMenu();
+
+  const initialiseMenu = async () => {
+    const menuReceived = await getMenu(prenom);
+    setMenu(menuReceived)
+  };
+
+  useEffect(() => {
+    initialiseMenu();
+  }, []);
 
   const UserContextValue = {
     prenom,
@@ -69,11 +79,7 @@ export default function OrderPage() {
     handleEditBasket,
   };
 
-  getUser("Alex")
-
-
-
-
+  getUser("Alex");
 
   return (
     <UserContext.Provider value={UserContextValue}>
