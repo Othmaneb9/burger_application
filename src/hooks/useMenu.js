@@ -19,13 +19,14 @@ export const useMenu = () => {
     syncBothMenus(username, NewMenu)
   };
 
-  const handleEdit = (productToEdit) => {
+  const handleEdit = (productToEdit, prenom) => {
     const menuCopy = JSON.parse(JSON.stringify(menu));
     const indexOfProductToEdit = menu.findIndex(
       (product) => product.id === productToEdit.id
     );
     menuCopy[indexOfProductToEdit] = productToEdit;
     setMenu(menuCopy);
+    syncBothMenus(prenom, menuCopy)
   };
   const resetMenu = (prenom) => {
     setMenu(fakeMenu.LARGE);
