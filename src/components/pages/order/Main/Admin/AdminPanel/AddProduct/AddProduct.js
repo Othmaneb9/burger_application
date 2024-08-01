@@ -15,7 +15,7 @@ const EMPTY_PRODUCT = {
 };
 
 export default function AddProduct() {
-  const { handleAddProduct } = useContext(UserContext);
+  const { prenom, handleAddProduct } = useContext(UserContext);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
@@ -26,13 +26,15 @@ export default function AddProduct() {
       id: crypto.randomUUID(),
       ...newProduct,
     };
-    handleAddProduct(NewProductToAdd);
+    handleAddProduct(NewProductToAdd, prenom);
     setNewProduct(EMPTY_PRODUCT);
 
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
     }, 2000);
+
+
   };
 
   const handleChange = (event) => {

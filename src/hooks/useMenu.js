@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { fakeMenu } from "../components/fakeData/fakeMenu";
+import { syncBothMenus } from "../api/product";
 
 export const useMenu = () => {
   const [menu, setMenu] = useState(fakeMenu.LARGE);
 
-  const handleAddProduct = (NewProduct) => {
+  const handleAddProduct = (NewProduct, username) => {
     const UpdatedMenu = [NewProduct, ...menu];
     setMenu(UpdatedMenu);
+    syncBothMenus(username, UpdatedMenu)
   };
   
   const handleDelete = (idOfProductToDelete) => {

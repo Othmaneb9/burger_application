@@ -6,6 +6,7 @@ import UserContext from "../../../context/UserContext";
 import { useMenu } from "../../../hooks/useMenu";
 import { fakeBasket } from "../../fakeData/fakeBasket";
 import { getUser } from "../../../api/user";
+import { useParams } from "react-router-dom";
 
 export default function OrderPage() {
   const [productSelected, setProductSelected] = useState({
@@ -41,11 +42,13 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
+  const {prenom} =useParams()
   const inputBaliseRef = useRef();
   const { handleAddProduct, handleDelete, handleEdit, menu, resetMenu } =
     useMenu();
 
   const UserContextValue = {
+    prenom,
     isModeAdmin,
     setIsModeAdmin,
     isEditSelected,
