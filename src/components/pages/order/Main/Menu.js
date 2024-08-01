@@ -29,7 +29,7 @@ export default function Menu() {
 
   if (menu.length === 0) {
     if (isModeAdmin) {
-      return <EmptyMenuAdmin onReset={resetMenu} />;
+      return <EmptyMenuAdmin onReset={() => resetMenu(prenom)} />;
     }
     return <EmptyMenuClient />;
   }

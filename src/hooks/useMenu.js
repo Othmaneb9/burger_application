@@ -27,8 +27,9 @@ export const useMenu = () => {
     menuCopy[indexOfProductToEdit] = productToEdit;
     setMenu(menuCopy);
   };
-  const resetMenu = () => {
+  const resetMenu = (prenom) => {
     setMenu(fakeMenu.LARGE);
+    syncBothMenus(prenom, fakeMenu.LARGE)
   };
 
   return {
