@@ -5,15 +5,19 @@ import { BsPersonCircle } from "react-icons/bs";
 import Input from "../../reusable-ui/Input";
 import PrimaryButton from "../../reusable-ui/PrimaryButton";
 import { SlArrowRight } from "react-icons/sl";
+import { authenticateUser } from "../../../api/user";
+import Welcome from "./Welcome";
 
 export default function LoginForm() {
   const [prenom, setPrenom] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    await authenticateUser(prenom)
     setPrenom("");
     navigate(`/OrderPage/${prenom}`);
+
   };
 
   const handleChange = (event) => {
@@ -22,21 +26,21 @@ export default function LoginForm() {
 
   return (
     <FormStyle action="submit" onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <hr />
-      <h2>Connectez-vous</h2>
-    <div>
-      <Input
-        Icon={<BsPersonCircle className="icon" /> }
-        value={prenom}
-        onChange={handleChange}
-        placeholder={"Entrez votre prénom"}
-        required
-      />
-      
-      
-      <PrimaryButton label={"Accéder à mon Espace"} Icon={<SlArrowRight className="icon" />} />
-    </div>
+      <Welcome/>
+      <div>
+        <Input
+          Icon={<BsPersonCircle className="icon" />}
+          value={prenom}
+          onChange={handleChange}
+          placeholder={"Entrez votre prénom"}
+          required
+        />
+
+        <PrimaryButton
+          label={"Accéder à mon Espace"}
+          Icon={<SlArrowRight className="icon" />}
+        />
+      </div>
     </FormStyle>
   );
 }
@@ -50,22 +54,6 @@ const FormStyle = styled.form`
   border-radius: 5px;
   font-family: "Amatic SC", cursive;
 
-  hr {
-    border: 1.5px solid #f56a2c;
-    margin-bottom: (8* 5)px;
-  }
-
-  h1 {
-    color: #FFFFFF;
-    font-size: 48px;
-  }
-
-  h2 {
-    margin: 20px 10px 10px;
-    color: #FFFFFF;
-    font-size: 36px;
-  }
-
   .icon {
     display: flex;
     justify-content: center;
@@ -73,4 +61,4 @@ const FormStyle = styled.form`
     font-size: 15px;
     margin-left: 10px;
   }
-`
+`;

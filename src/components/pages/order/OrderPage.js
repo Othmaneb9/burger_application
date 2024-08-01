@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar/Navbar";
 import Main from "./Main/Main";
 import UserContext from "../../../context/UserContext";
 import { useMenu } from "../../../hooks/useMenu";
 import { fakeBasket } from "../../fakeData/fakeBasket";
+import { getUser } from "../../../api/user";
+import { useParams } from "react-router-dom";
+import { getMenu } from "../../../api/product";
 
 export default function OrderPage() {
   const [productSelected, setProductSelected] = useState({
@@ -13,12 +16,13 @@ export default function OrderPage() {
     imageSource: "",
     price: 0,
   });
-  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [basket, setBasket] = useState([]);
 
   const handleAddBasket = async (NewProduct) => {
     const nouveauProduit = menu.find((produit) => NewProduct === produit.id);
     const newBasket = [nouveauProduit, ...basket];
     await setBasket(newBasket);
+    localStorage.setItem(prenom, JSON.stringify(newBasket))
   };
 
   const handleDeleteBasket = async (newDelete) => {
@@ -40,11 +44,30 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isEditSelected, setIsEditSelected] = useState(false);
   const [isAddSelected, setIsAddSelected] = useState(true);
+  const { prenom } = useParams();
   const inputBaliseRef = useRef();
-  const { handleAddProduct, handleDelete, handleEdit, menu, resetMenu } =
+  const { handleAddProduct, handleDelete, handleEdit, menu, setMenu, resetMenu } =
     useMenu();
 
+  const initialiseMenu = async () => {
+    const menuReceived = await getMenu(prenom);
+    setMenu(menuReceived)
+  };
+  const initialiseBasket = async () => {
+    const basketReceived = JSON.parse(localStorage.getItem(prenom));
+    setBasket(basketReceived)
+  };
+
+
+  useEffect(() => {
+    initialiseMenu();
+  }, []);
+  useEffect(() => {
+    initialiseBasket();
+  }, []);
+
   const UserContextValue = {
+    prenom,
     isModeAdmin,
     setIsModeAdmin,
     isEditSelected,
@@ -64,6 +87,8 @@ export default function OrderPage() {
     handleDeleteBasket,
     handleEditBasket,
   };
+
+  getUser("Alex");
 
   return (
     <UserContext.Provider value={UserContextValue}>

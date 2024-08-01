@@ -6,14 +6,14 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextConfig } from "./AddProduct/getInputTextConfig";
 
 export default function EditProduct() {
-  const { productSelected, setProductSelected, handleEdit, inputBaliseRef } =
+  const { prenom, productSelected, setProductSelected, handleEdit, inputBaliseRef } =
     useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     const produitToEdit = { ...productSelected, [name]: value };
     setProductSelected(produitToEdit);
-    handleEdit(produitToEdit);
+    handleEdit(produitToEdit, prenom);
   };
 
   const inputTexts = getInputTextConfig(productSelected);

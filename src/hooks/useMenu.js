@@ -1,31 +1,36 @@
 import { useState } from "react";
 import { fakeMenu } from "../components/fakeData/fakeMenu";
+import { syncBothMenus } from "../api/product";
 
 export const useMenu = () => {
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const [menu, setMenu] = useState();
 
-  const handleAddProduct = (NewProduct) => {
+  const handleAddProduct = (NewProduct, username) => {
     const UpdatedMenu = [NewProduct, ...menu];
     setMenu(UpdatedMenu);
+    syncBothMenus(username, UpdatedMenu)
   };
   
-  const handleDelete = (idOfProductToDelete) => {
+  const handleDelete = (idOfProductToDelete, username) => {
     const NewMenu = [...menu].filter(
       (product) => product.id !== idOfProductToDelete
     );
     setMenu(NewMenu);
+    syncBothMenus(username, NewMenu)
   };
 
-  const handleEdit = (productToEdit) => {
+  const handleEdit = (productToEdit, prenom) => {
     const menuCopy = JSON.parse(JSON.stringify(menu));
     const indexOfProductToEdit = menu.findIndex(
       (product) => product.id === productToEdit.id
     );
     menuCopy[indexOfProductToEdit] = productToEdit;
     setMenu(menuCopy);
+    syncBothMenus(prenom, menuCopy)
   };
-  const resetMenu = () => {
+  const resetMenu = (prenom) => {
     setMenu(fakeMenu.LARGE);
+    syncBothMenus(prenom, fakeMenu.LARGE)
   };
 
   return {
