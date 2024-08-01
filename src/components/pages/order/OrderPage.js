@@ -16,12 +16,13 @@ export default function OrderPage() {
     imageSource: "",
     price: 0,
   });
-  const [basket, setBasket] = useState(fakeBasket.EMPTY);
+  const [basket, setBasket] = useState([]);
 
   const handleAddBasket = async (NewProduct) => {
     const nouveauProduit = menu.find((produit) => NewProduct === produit.id);
     const newBasket = [nouveauProduit, ...basket];
     await setBasket(newBasket);
+    localStorage.setItem(prenom, JSON.stringify(newBasket))
   };
 
   const handleDeleteBasket = async (newDelete) => {
@@ -52,9 +53,17 @@ export default function OrderPage() {
     const menuReceived = await getMenu(prenom);
     setMenu(menuReceived)
   };
+  const initialiseBasket = async () => {
+    const basketReceived = JSON.parse(localStorage.getItem(prenom));
+    setBasket(basketReceived)
+  };
+
 
   useEffect(() => {
     initialiseMenu();
+  }, []);
+  useEffect(() => {
+    initialiseBasket();
   }, []);
 
   const UserContextValue = {
